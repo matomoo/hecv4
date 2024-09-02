@@ -1,10 +1,10 @@
-"use server";
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GetCurrentUserDatabase = async () => {
+export async function GET(request: NextRequest,
+  { params }: { params: { id: string } }) {
   try {
-    // check if user is already exists with clerk userid property
     const clerkUser = await currentUser();
     let databaseUser = null;
     databaseUser = await db.appUser.findUnique({
@@ -13,9 +13,9 @@ export const GetCurrentUserDatabase = async () => {
       },
     });
     if (databaseUser) {
-      return {
+      return NextResponse.json({
         data: databaseUser,
-      };
+      })
     }
 
     // if user doesn't exists, create new user
@@ -34,13 +34,15 @@ export const GetCurrentUserDatabase = async () => {
     const result = await db.appUser.create({
       data: newUser,
     });
-    return {
+    return NextResponse.json({
       data: result,
-    };
+    })
   } catch (error: any) {
     console.log(error);
-    return {
-      error: error.message,
-    };
+    return NextResponse.json({
+      data: error.message,
+    })
   }
-};
+
+
+}

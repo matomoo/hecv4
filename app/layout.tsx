@@ -5,11 +5,13 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import 'remixicon/fonts/remixicon.css';
 import "./globals.css";
+import ReactQueryProviders from "@/providers/query-client-provider";
+import ReactQueryProvider from "@/providers/react-query-provider";
 
 
 export const metadata: Metadata = {
   title: "SIM HEC",
-  description: "Onestop for all your sims needs",
+  description: "Await here",
 };
 
 export default function RootLayout({
@@ -18,16 +20,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider afterSignOutUrl='/sign-in'>
-      <AntdRegistry>
-        <html lang="en" className="antialiased" >
-          <body>
-            <ThemeProvider>
-              <LayoutProvider>{children}</LayoutProvider>
-            </ThemeProvider>
-          </body>
-        </html>
-      </AntdRegistry>
-    </ClerkProvider>
+    <html lang="en" className="antialiased" >
+      <body>
+        <ClerkProvider afterSignOutUrl='/sign-in'>
+          <AntdRegistry>
+            <ReactQueryProviders >
+              <ThemeProvider>
+                <LayoutProvider>
+                  {children}
+                </LayoutProvider>
+              </ThemeProvider>
+            </ReactQueryProviders>
+          </AntdRegistry>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
