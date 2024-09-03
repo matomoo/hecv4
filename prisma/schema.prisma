@@ -30,15 +30,17 @@ enum AppxStatus {
 
 // user model
 model AppUser {
-  id          String   @id @default(cuid()) @map("_id")
+  id          String            @id @default(cuid()) @map("_id")
   username    String
-  email       String   @unique
+  email       String            @unique
   profilePic  String
-  isAdmin     Boolean  @default(false)
-  isActive    Boolean  @default(true)
-  clerkUserId String   @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isAdmin     Boolean           @default(false)
+  isActive    Boolean           @default(true)
+  clerkUserId String            @unique
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  nip         String?           @unique @db.VarChar(20)
+  petugas     tblx_ttd_petugas?
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -30545,4 +30547,5 @@ model tblx_ttd_petugas {
   nip      String  @id @db.VarChar(20)
   ttd_foto String? @db.VarChar(255)
   petugas  petugas @relation(fields: [nip], references: [nip], onDelete: NoAction, map: "tblx_ttd_petugas_ibfk_1")
+  AppUser  AppUser @relation(fields: [nip], references: [nip], onDelete: NoAction, map: "tblx_ttd_petugas_ibfk_2")
 }

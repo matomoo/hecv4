@@ -1,10 +1,11 @@
 import { Card, Space, Divider, Button, Flex } from 'antd';
+import AppUserWelcomeCard from './(main)/appUser/page';
 
 
-export default async function Home({ searchParams }: { searchParams: any }) {
-  const key = JSON.stringify(searchParams);
+export default async function Home() {
   return (
     <div>
+      <AppUserWelcomeCard />
       <div>
         <Divider>Menu Rawat Jalan</Divider>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">

@@ -10,7 +10,7 @@ import ReactQueryProvider from "@/providers/react-query-provider";
 
 
 export const metadata: Metadata = {
-  title: "SIM HEC",
+  title: "SIM HEC V2",
   description: "Await here",
 };
 

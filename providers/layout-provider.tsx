@@ -1,36 +1,24 @@
 "use client";
-import { appUserOptions } from '@/app/reactQuery/appUser';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import Loader from "@/app/components/loader";
-import { KasirRalanMenu, userMenu } from "@/constants";
+import { useAppUserOptions } from '@/app/hooks/useAppUserOptions';
 import { UserButton } from "@clerk/nextjs";
 import { AppUser } from "@prisma/client";
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import useAppUser from '@/app/reactQuery/useAppUser';
-import AppUserList from '@/app/reactQuery/AppUserList';
+import React from "react";
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
-  // console.log('3')
+  const { data: appUser, error, isLoading } = useSuspenseQuery(useAppUserOptions)
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
   const router = useRouter();
-  const { data: appUser, error, isLoading } = useSuspenseQuery(appUserOptions)
-  // const { data: appUser, error, isLoading } = useAppUser()
-  // console.log(appUser)
-  const [menuToShow = userMenu, setMenuToShow] = React.useState<any>(userMenu);
-  const [menuKasirRalan = KasirRalanMenu, setMenuKasirRalan] = React.useState<any>(KasirRalanMenu);
   const [currentUserData = null, setCurrentUserData] =
     React.useState<AppUser | null>(null);
   const [loading = false, setLoading] = React.useState<boolean>(false);
   const pathname = usePathname();
   const isPublicRoute = ["sign-in", "sign-up"].includes(pathname.split("/")[1]);
   const isAdminRoute = pathname.split("/")[1] === "admin";
-  const [isClient, setIsClient] = React.useState(false)
-
-  // console.log(data)
-  if (isLoading) return <p>Loading...</p>;
-
-  if (error) return <p>{error.message}</p>;
-
 
   const getHeader = () => {
     if (isPublicRoute) return null;
@@ -43,7 +31,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
               router.push("/");
             }}
           >
-            SIM HEC V2 {appUser?.username}
+            SIM HEC V2
           </h1>
           <div className="bg-white py-2 px-5 rounded-sm flex items-center gap-5">
             <UserButton signInUrl="/sign-in" />
@@ -54,9 +42,6 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   };
 
   const getContent = () => {
-    // console.log('2')
-    // console.log(appUser)
-    console.log(appUser?.username)
     if (isPublicRoute) return children;
     if (loading) return <Loader />;
     if (isAdminRoute && !currentUserData?.isAdmin)
@@ -68,44 +53,10 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     return <div className="py-5 lg:px-20 px-5">{children}</div>;
   };
 
-
-
-  // useEffect(() => {
-  //   console.log('1')
-  //   console.log(appUser)
-  //   // setCurrentUserData(appUser);
-
-  //   // const getCurrentUser = async () => {
-  //   //   try {
-  //   //     setLoading(true);
-  //   //     const response: any = await GetCurrentUserFromMongoDB();
-  //   //     if (response.error) { throw new Error(response.error.message) }
-  //   //     else {
-  //   //       setCurrentUserData(response.data);
-  //   //       if (response.data.isAdmin) {
-  //   //         setMenuToShow(adminMenu);
-  //   //       }
-  //   //     }
-  //   //   } catch (error: any) {
-  //   //     console.log(error)
-  //   //     // error here due to not connect to hec db
-  //   //     // router.push("/sign-in")
-  //   //     // router.refresh()
-  //   //   } finally {
-  //   //     setLoading(false);
-  //   //   }
-  //   // };
-
-  //   // getCurrentUser();
-  //   // setIsClient(true)
-  // }, []);
-
   return (
     <div>
       {getHeader()}
       {getContent()}
-
-
     </div>
   );
 }
