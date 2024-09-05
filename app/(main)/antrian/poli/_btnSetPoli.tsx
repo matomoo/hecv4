@@ -1,9 +1,7 @@
 import { tblx_antrian_poli } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Button } from 'antd'
+import { Button } from 'antd';
 import axios from 'axios';
-import React from 'react'
-import { SchemaAntrianPoli } from '../../../schema/antrianPoliSchema';
 
 
 const BtnSetPoli = ({ user, namaPoli }: { user?: any, namaPoli: string }) => {
@@ -35,8 +33,6 @@ const BtnSetPoli = ({ user, namaPoli }: { user?: any, namaPoli: string }) => {
         size='small'
         onClick={() => {
           mutationUpdate.mutate({ ...user })
-          console.log(user)
-          user.status = 'Sementara Periksa'
         }}
       >{namaPoli}</Button>
     </div>

@@ -1,6 +1,5 @@
 import useAntrianPoli from '@/app/hooks/useAntrianPoli';
 import { Flex, List, Typography } from 'antd';
-import React from 'react'
 import BtnSetPoli from './_btnSetPoli';
 
 const ListAntrianPoli = () => {
@@ -23,10 +22,7 @@ const ListAntrianPoli = () => {
                 <BtnSetPoli user={item} namaPoli={'POLI 2'} />
               ]}
             >
-              {/* <List.Item.Meta
-                title={`${item.nm_pasien} / ${item.nm_dokter}`}
-              /> */}
-              {item.nm_pasien} / {item.status}
+              {item.nm_pasien} / {item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}
             </List.Item>
           )}
         />

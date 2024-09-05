@@ -7,5 +7,5 @@ export interface SchemaAntrianPoli {
   kd_poli: string;
   nm_dokter: string;
   no_rawat: string;
-  status: string;
+  numPeriksaPoli: number;
 }

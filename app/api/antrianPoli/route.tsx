@@ -31,10 +31,9 @@ export async function GET(
       pasien.nm_pasien,
       reg_periksa.stts,
       penilaian_medis_ralan_mata.kd_dokter,
-      kd_poli,
       dokter.nm_dokter,
       reg_periksa.no_rawat,
-      'Menunggu' as 'status'
+      IFNULL(t.numPeriksaPoli1, 0) as numPeriksaPoli
     FROM
       reg_periksa
       INNER JOIN
@@ -49,6 +48,11 @@ export async function GET(
       dokter
       ON 
         penilaian_medis_ralan_mata.kd_dokter = dokter.kd_dokter
+      LEFT JOIN
+        (SELECT no_rkm_medis, CONVERT(COUNT(no_rkm_medis),UNSIGNED) AS numPeriksaPoli1
+        FROM tblx_antrian_poli
+        GROUP BY no_rkm_medis) t on
+        reg_periksa.no_rkm_medis = t.no_rkm_medis
     WHERE
       reg_periksa.stts = 'Berkas Diterima' and
       reg_periksa.tgl_registrasi=${dayjs.utc().format('YYYY-MM-DD')} order by penilaian_medis_ralan_mata.tanggal;

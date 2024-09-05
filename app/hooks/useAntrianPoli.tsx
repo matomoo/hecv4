@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 import { SchemaAntrianPoli } from '../schema/antrianPoliSchema';
 
@@ -18,7 +18,9 @@ const useAntrianPoli = () => {
       const response = await axios.get("/api/antrianPoli");
       return response.data.data;
     },
-    staleTime: 10 * 1000 //10s
+    staleTime: 10 * 1000, //10s
+    refetchInterval: 10 * 1000, //10s
+    refetchIntervalInBackground: true
   });
 };
 

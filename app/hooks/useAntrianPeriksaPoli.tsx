@@ -1,7 +1,6 @@
-import { queryOptions, useQuery } from '@tanstack/react-query';
-import axios from "axios";
-import { SchemaAntrianPoli } from '../schema/antrianPoliSchema';
 import { tblx_antrian_poli } from '@prisma/client';
+import { useQuery } from '@tanstack/react-query';
+import axios from "axios";
 
 const useAntrianPeriksaPoli = (namaPoli: string) => {
   return useQuery<tblx_antrian_poli, Error>({

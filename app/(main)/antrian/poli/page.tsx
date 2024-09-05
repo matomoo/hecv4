@@ -1,16 +1,7 @@
 'use client'
-import useAntrianPoli from '@/app/hooks/useAntrianPoli';
-import { Card, Flex, List, Space } from 'antd'
-import React from 'react'
-import { Typography } from 'antd';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { SchemaAntrianPoli } from '@/app/schema/antrianPoliSchema';
-import BtnConnectAkun from '../../appUser/_btnConnectAkun';
-import BtnSetPoli from './_btnSetPoli';
-import CardPoli1 from './_cardPoli';
-import CardPoli2 from './_cardPoli2';
-import ListAntrianPoli from './_listAntrianPoli';
+import { Flex, Typography } from 'antd';
 import CardPoli from './_cardPoli';
+import ListAntrianPoli from './_listAntrianPoli';
 
 const { Title } = Typography;
 
