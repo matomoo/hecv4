@@ -1,6 +1,7 @@
 import useAntrianPeriksaPoli from '@/app/hooks/useAntrianPeriksaPoli';
-import { Card } from 'antd';
+import { Card, Typography } from 'antd';
 import React from 'react'
+import BtnSetPoliOff from './_btnSetPoliOff';
 
 const CardPoli = ({ namaPoli }: { namaPoli: string }) => {
   const { data: dataAntrianPeriksaPoli, isError, error, isLoading } = useAntrianPeriksaPoli(namaPoli);
@@ -11,8 +12,11 @@ const CardPoli = ({ namaPoli }: { namaPoli: string }) => {
   // - display nama dokter
   // - display jadwal dokter
   return (
-    <Card title={namaPoli} bordered={false} className='w-full'>
-      {dataAntrianPeriksaPoli?.nm_dokter} / {dataAntrianPeriksaPoli?.nm_pasien}
+    <Card title={namaPoli}
+      extra={<BtnSetPoliOff user={dataAntrianPeriksaPoli} namaPoli={namaPoli} />}
+    >
+      <Typography.Title level={4}>{dataAntrianPeriksaPoli?.nm_dokter}</Typography.Title>
+      <Typography.Title level={5}>{dataAntrianPeriksaPoli?.nm_pasien}</Typography.Title>
     </Card>
   )
 }
