@@ -9128,6 +9128,7 @@ model penilaian_medis_ralan_mata {
   terapi        String                               @db.Text
   tindakan      String                               @db.Text
   edukasi       String                               @db.Text()
+  reg_periksa   reg_periksa?
 
   @@index([kd_dokter], map: "kd_dokter")
 }
@@ -11104,6 +11105,8 @@ model referensi_mobilejkn_bpjs_taskid {
   @@id([no_rawat, taskid])
 }
 
+
+
 model reg_periksa {
   no_reg                          String?                           @db.VarChar(8)
   no_rawat                        String                            @id @db.VarChar(17)
@@ -11139,6 +11142,7 @@ model reg_periksa {
   bridging_sep                    bridging_sep[]
   mutasi_berkas                   mutasi_berkas[]
   tblx_surat_persetujuan_rujukan  tblx_surat_persetujuan_rujukan?
+  penilaian_medis_ralan_mata      penilaian_medis_ralan_mata?       @relation(fields: [no_rawat], references: [no_rawat])
 
   @@index([kd_dokter], map: "kd_dokter")
   @@index([kd_pj], map: "kd_pj")
@@ -30548,4 +30552,11 @@ model tblx_ttd_petugas {
   ttd_foto String? @db.VarChar(255)
   petugas  petugas @relation(fields: [nip], references: [nip], onDelete: NoAction, map: "tblx_ttd_petugas_ibfk_1")
   AppUser  AppUser @relation(fields: [nip], references: [nip], onDelete: NoAction, map: "tblx_ttd_petugas_ibfk_2")
+}
+
+model tblx_antrian_poli {
+  kd_poli    String @id @db.VarChar(10)
+  no_rkm_medis String?  @db.VarChar(15)
+  nm_pasien    String? @db.VarChar(40)
+  nm_dokter    String? @db.VarChar(40)
 }

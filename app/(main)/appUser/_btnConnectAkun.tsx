@@ -1,18 +1,13 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import axios from 'axios'
-import React from 'react'
-import ConnectAkunForm from './_form'
 import { AppUser } from '@prisma/client';
-import useAppUser from '@/app/hooks/useAppUser';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Space } from 'antd';
+import axios from 'axios';
+import ConnectAkunForm from './_form';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 
 const BtnConnectAkun = ({ user }: { user: AppUser }) => {
   const queryClient = useQueryClient();
-  const { data: dataAppUser, isError, isLoading } = useAppUser();
-
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>error</p>;
 
   const mutationAdd = useMutation({
     mutationFn: (newData: AppUser) => {
@@ -35,21 +30,26 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
               <div>An error occurred: {mutationAdd.error.message}</div>
             ) : null}
 
-            {dataAppUser?.nip === null ?
-              <ConnectAkunForm
-                user={user}
-                handlerSubmit={(values) => {
-                  mutationAdd.mutate({ ...user, nip: values.nip })
-                }} />
-              : dataAppUser?.nip
-            }
+            <Space>
+              {user?.nip === null ?
+                <ConnectAkunForm
+                  user={user}
+                  handlerSubmit={(values) => {
+                    mutationAdd.mutate({ ...user, nip: values.nip })
+                  }} />
+                : `NIP : ${user?.nip}`
+              }
 
-            {dataAppUser?.nip !== null && <Button danger iconPosition={'start'}
-              onClick={() => {
-                mutationAdd.mutate({ ...user, nip: null })
-              }} className='w-fit'>
-              Delete Link
-            </Button >}
+              {(user?.nip !== null || user?.nip !== undefined) &&
+                <Button danger
+                  type='text'
+                  size='small'
+                  shape="circle" icon={<CloseCircleOutlined />}
+                  onClick={() => {
+                    mutationAdd.mutate({ ...user, nip: null })
+                  }} />
+              }
+            </Space>
           </Space>
         </>
       )}
