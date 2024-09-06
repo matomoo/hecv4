@@ -14,11 +14,15 @@ export async function GET(
 
   // const { nip } = body;
 
-  const getAll = await db.petugas.findMany({
-    orderBy: {
-      nama: "asc",
-    },
-  });
+  try {
+    const getAll = await db.petugas.findMany({
+      orderBy: {
+        nama: "asc",
+      },
+    });
 
-  return NextResponse.json({ data: getAll });
+    return NextResponse.json({ data: getAll });
+  } catch (error) {
+    return NextResponse.json({ data: "Error fetching petugas" });
+  }
 }

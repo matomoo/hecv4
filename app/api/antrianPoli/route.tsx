@@ -4,16 +4,17 @@ import dayjs from "dayjs";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 
+//#region - dayjs setting
+dayjs.locale("id");
+dayjs.extend(utc)
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Makassar");
+//#endregion
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { kodedokter: string } }
 ) {
-  //#region - dayjs setting
-  dayjs.locale("id");
-  dayjs.extend(utc)
-  dayjs.extend(timezone);
-  dayjs.tz.setDefault("Asia/Makassar");
-  //#endregion
 
   // TODO: validasi user
   // const session = await GetCurrentAppUserFromDatabase();
@@ -23,8 +24,8 @@ export async function GET(
   // TODO: validasi value form yg di terima
 
   // const { nip } = body;
-
-  const getAll = await db.$queryRaw`
+  try {
+    const getAll = await db.$queryRaw`
     SELECT
       reg_periksa.no_reg,
       reg_periksa.no_rkm_medis, 
@@ -58,5 +59,9 @@ export async function GET(
       reg_periksa.tgl_registrasi=${dayjs.utc().format('YYYY-MM-DD')} order by penilaian_medis_ralan_mata.tanggal;
     `;
 
-  return NextResponse.json({ data: getAll });
+    return NextResponse.json({ data: getAll });
+  } catch (error) {
+    return NextResponse.json({ data: 'Error fetching' });
+  }
+
 }

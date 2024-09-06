@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest,
   { params }: { params: { id: string } }) {
+  const clerkUser = await currentUser();
   try {
-    const clerkUser = await currentUser();
     let databaseUser = null;
     databaseUser = await db.appUser.findUnique({
       where: {

@@ -42,7 +42,7 @@ const ConnectAkunForm = (
               style={{ width: 200 }}
             >
               {dataPetugas?.map((elm1: petugas) => {
-                return <Option value={elm1.nip}>{elm1.nama}</Option>
+                return <Option key={elm1.nip} value={elm1.nip}>{elm1.nama}</Option>
               })}
             </Select>
           </Form.Item>
