@@ -23,8 +23,8 @@ const BtnSetPoli = ({ user, namaPoli }: { user?: any, namaPoli: string }) => {
 
     onSuccess: (savedData, newData) => {
       queryClient.setQueryData<tblx_antrian_poli>(['antrianPeriksaPoli' + namaPoli], newData);
-
     },
+
   })
   return (
     <div>

@@ -10,7 +10,7 @@ const ListAntrianPoli = () => {
   // console.log(dataAntrianPoli)
   return (
     <div>
-      <Flex vertical >
+      <Flex vertical className='mt-8' >
         <Typography.Title level={5}>Data Antrian Poli</Typography.Title>
         <List
           bordered
@@ -22,7 +22,9 @@ const ListAntrianPoli = () => {
                 <BtnSetPoli user={item} namaPoli={'POLI 2'} />
               ]}
             >
-              {item.nm_pasien} / {item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}
+              <Typography.Text strong>{item.nm_pasien}</Typography.Text>
+              <Typography.Text code type={item.numPeriksaPoli > 0 ? `success` : 'secondary'}>{item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}</Typography.Text>
+              <Typography.Text type="secondary">{item.nm_dokter}</Typography.Text>
             </List.Item>
           )}
         />

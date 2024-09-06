@@ -11105,8 +11105,6 @@ model referensi_mobilejkn_bpjs_taskid {
   @@id([no_rawat, taskid])
 }
 
-
-
 model reg_periksa {
   no_reg                          String?                           @db.VarChar(8)
   no_rawat                        String                            @id @db.VarChar(17)
@@ -30555,8 +30553,10 @@ model tblx_ttd_petugas {
 }
 
 model tblx_antrian_poli {
-  kd_poli    String @id @db.VarChar(10)
-  no_rkm_medis String?  @db.VarChar(15)
+  kd_poli      String  @id @db.VarChar(10)
+  no_rkm_medis String? @db.VarChar(15)
   nm_pasien    String? @db.VarChar(40)
   nm_dokter    String? @db.VarChar(40)
+  no_rawat     String? @db.VarChar(17)
+  kd_dokter    String? @db.VarChar(20)
 }

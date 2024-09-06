@@ -31,7 +31,7 @@ export async function PATCH(
   const body = await request.json();
   // TODO: validasi value form yg di terima
 
-  const { kd_poli } = body;
+  const { no_rawat } = body;
   // console.log(body)
 
   const updatedData = await db.tblx_antrian_poli.update({
@@ -39,9 +39,20 @@ export async function PATCH(
     data: {
       nm_dokter: body.nm_dokter,
       nm_pasien: body.nm_pasien,
-      no_rkm_medis: body.no_rkm_medis
+      no_rkm_medis: body.no_rkm_medis,
+      no_rawat: body.no_rawat,
+      kd_dokter: body.kd_dokter
     },
   });
+
+  const updatedDokter = await db.reg_periksa.update({
+    where: { no_rawat: body.no_rawat },
+    data: {
+      kd_dokter: body.kd_dokter
+    }
+  })
+
+
 
   return NextResponse.json({ data: updatedData });
 }
