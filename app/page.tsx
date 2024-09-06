@@ -1,20 +1,40 @@
 import { Card, Space, Divider, Button, Flex } from 'antd';
-import AppUserWelcomeCard from './(main)/appUser/page';
+import AppUserWelcomeCard from './(admin)/appUser/page';
 
 
 export default async function Home() {
   return (
     <Space direction='vertical'>
       <AppUserWelcomeCard />
-      <Card>
-        <Space>
-          <div>Menu Admin Antrian Poli</div>
-          <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrian/poli"
-            icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
-          >
-          </Button>
-        </Space>
-      </Card>
+      <Space>
+        <Card>
+          <Space>
+            <div>Menu Admin Antrian Poli</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrian/poliAdmin"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+        <Card>
+          <Space>
+            <div>Display Antrian Poli 1</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrianPoli/1"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+        <Card>
+          <Space>
+            <div>Display Antrian Poli 2</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrianPoli/2"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+      </Space>
     </Space>
   );
 }

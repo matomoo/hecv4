@@ -17,7 +17,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     React.useState<AppUser | null>(null);
   const [loading = false, setLoading] = React.useState<boolean>(false);
   const pathname = usePathname();
-  const isPublicRoute = ["sign-in", "sign-up"].includes(pathname.split("/")[1]);
+  const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli'].includes(pathname.split("/")[1]);
   const isAdminRoute = pathname.split("/")[1] === "admin";
 
   const getHeader = () => {

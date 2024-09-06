@@ -37,7 +37,7 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
                   handlerSubmit={(values) => {
                     mutationAdd.mutate({ ...user, nip: values.nip })
                   }} />
-                : `NIP : ${user?.nip}`
+                : user?.nip === undefined ? 'Need reconnect' : `NIP : ${user?.nip}`
               }
 
               {(user?.nip !== null || user?.nip !== undefined) &&
