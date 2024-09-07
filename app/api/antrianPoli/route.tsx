@@ -55,7 +55,7 @@ export async function GET(
         GROUP BY no_rkm_medis) t on
         reg_periksa.no_rkm_medis = t.no_rkm_medis
     WHERE
-      reg_periksa.stts = 'Berkas Diterima' and
+      -- reg_periksa.stts = 'Berkas Diterima' and
       reg_periksa.tgl_registrasi=${dayjs.utc().format('YYYY-MM-DD')} order by penilaian_medis_ralan_mata.tanggal;
     `;
 
