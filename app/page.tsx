@@ -1,5 +1,5 @@
 import { Card, Space, Divider, Button, Flex } from 'antd';
-import AppUserWelcomeCard from './(admin)/appUser2/page';
+import AppUserWelcomeCard from './(admin)/appUser/page';
 
 
 export default async function Home() {

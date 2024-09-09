@@ -1,10 +1,9 @@
 'use client'
 
-import { Card, Flex, Space } from "antd";
+import { Card, Space } from "antd";
 import useAppUser from "../../hooks/useAppUser";
 // import BtnConnectAkun from "./_btnConnectAkun";
 import { AppUser } from "@prisma/client";
-import { currentUser } from "@clerk/nextjs/server";
 import BtnConnectAkun from "./_btnConnectAkun";
 
 const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
