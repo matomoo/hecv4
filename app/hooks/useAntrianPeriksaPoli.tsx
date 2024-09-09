@@ -3,11 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 
 const useAntrianPeriksaPoli = (namaPoli: string) => {
+  console.log(namaPoli)
   return useQuery<tblx_antrian_poli, Error>({
     queryKey: ["antrianPeriksaPoli" + namaPoli],
     queryFn: async () => {
-      const response = await axios.get("/api/antrianPoli/" + namaPoli);
-      return response.data.data;
+      const response = await axios.get("https://hec1.hijr.de/hecapiv3/getByPoliTblxAntrianPoli/" + namaPoli);
+      return response.data.response.data[0];
     },
     staleTime: 10 * 1000, //10s
     // refetchInterval: 10 * 1000, //10s

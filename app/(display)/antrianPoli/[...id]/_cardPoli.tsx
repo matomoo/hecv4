@@ -2,7 +2,7 @@ import useAntrianPeriksaPoli from '@/app/hooks/useAntrianPeriksaPoli';
 
 const CardPoli = ({ namaPoli }: { namaPoli: string }) => {
 
-  const namaPolix = "POLI " + namaPoli
+  const namaPolix = "POLI_" + namaPoli
 
   const { data: dataAntrianPeriksaPoli, isError, error, isLoading } = useAntrianPeriksaPoli(namaPolix);
   if (isLoading) return <p>Loading...</p>;

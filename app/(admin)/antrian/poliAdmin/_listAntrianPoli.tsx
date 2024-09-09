@@ -18,8 +18,8 @@ const ListAntrianPoli = () => {
             return (
               <List.Item
                 actions={[
-                  <BtnSetPoli key={'1'} user={item} namaPoli={'POLI 1'} />,
-                  <BtnSetPoli key={'2'} user={item} namaPoli={'POLI 2'} />
+                  <BtnSetPoli key={'1'} user={item} namaPoli={'POLI_1'} />,
+                  <BtnSetPoli key={'2'} user={item} namaPoli={'POLI_2'} />
                 ]}
               >
                 <Typography.Text strong>{item.nm_pasien}</Typography.Text>
