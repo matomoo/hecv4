@@ -8,9 +8,9 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
-  const { data: appUser, error, isLoading } = useSuspenseQuery(useAppUserOptions)
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
+  // const { data: appUser, error, isLoading } = useSuspenseQuery(useAppUserOptions)
+  // if (isLoading) return <p>Loading...</p>;
+  // if (error) return <p>{error.message}</p>;
 
   const router = useRouter();
   const [currentUserData = null, setCurrentUserData] =
@@ -44,7 +44,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   const getContent = () => {
     if (isPublicRoute) return children;
     if (loading) return <Loader />;
-    if (isAdminRoute && !currentUserData?.isAdmin)
+    if (isAdminRoute)
       return (
         <div className="py-20 lg:px-20 px-5 text-center text-gray-600 text-sm">
           You are not authorized to view this page

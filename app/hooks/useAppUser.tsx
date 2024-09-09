@@ -9,7 +9,8 @@ const useAppUser = (clerkId: string) => {
     queryFn: async () => {
       // const response = await axios.get("/api/appUser");
       const response = await axios.get("http://localhost/hec/apiv3/getByIdAppUser/" + clerkId);
-      return response.data.data;
+      // console.log(response.data.response.data[0])
+      return response.data.response.data[0];
     },
     staleTime: 10 * 1000
   });
