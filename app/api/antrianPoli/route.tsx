@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dayjs from "dayjs";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import { getAntrianPoli } from '@prisma/client/sql'
+// import { getAntrianPoli } from '@prisma/client/sql'
 
 
 //#region - dayjs setting
@@ -29,7 +29,7 @@ export async function GET(
   try {
 
     const paramDay = dayjs.utc().format('YYYY-MM-DD')
-    const getAll = await db.$queryRawTyped(getAntrianPoli(paramDay))
+    const getAll = {} //await db.$queryRawTyped(getAntrianPoli(paramDay))
     return NextResponse.json({ data: getAll });
   } catch (error) {
     return NextResponse.json({ data: 'Error fetching' });
