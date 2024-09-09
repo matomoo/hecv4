@@ -27,5 +27,5 @@ SELECT
         GROUP BY no_rkm_medis) t on
         t1.no_rkm_medis = t.no_rkm_medis
     WHERE
-      -- t1.stts = 'Berkas Diterima' and
+      t1.stts = 'Berkas Diterima' and
       t1.tgl_registrasi=? order by t2.tanggal;
