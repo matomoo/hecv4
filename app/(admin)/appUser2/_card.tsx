@@ -17,6 +17,7 @@ const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
     <Card>
       <Space direction="vertical" >
 
+        <div>Card v2</div>
         <div>Hello, {appUser?.username}</div>
         <div>Link Akun : <BtnConnectAkun user={appUser as AppUser} /> </div>
 
