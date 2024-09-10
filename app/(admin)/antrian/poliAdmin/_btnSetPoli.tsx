@@ -18,7 +18,10 @@ const BtnSetPoli = ({ user, namaPoli }: { user?: any, namaPoli: string }) => {
 
   const mutationUpdate = useMutation({
     mutationFn: (newData: tblx_antrian_poli) => {
-      return axios.patch('/api/antrianPoli/' + namaPoli, newData)
+
+      // return axios.patch('/api/antrianPoli/' + namaPoli, newData)
+      return axios.put('https://hec1.hijr.de/hecapiv3/updateAntrianPeriksaPoli/' + namaPoli, newData)
+
     },
 
     onSuccess: (savedData, newData) => {

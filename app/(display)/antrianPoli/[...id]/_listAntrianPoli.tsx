@@ -6,12 +6,13 @@ const ListAntrianPoli = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  // console.log(dataAntrianPoli)
+  console.log(dataAntrianPoli)
   return (
     <div>
       <Flex vertical className='mt-8' >
         <div className='text-2xl text-sky-600'>Antrian Poli</div>
         <div className='p-4 bg-slate-500 rounded-xl'>
+
           <List
             style={{ color: '#0284c7' }}
             dataSource={dataAntrianPoli}

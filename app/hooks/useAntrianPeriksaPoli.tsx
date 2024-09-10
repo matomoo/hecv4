@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 
 const useAntrianPeriksaPoli = (namaPoli: string) => {
-  console.log(namaPoli)
   return useQuery<tblx_antrian_poli, Error>({
     queryKey: ["antrianPeriksaPoli" + namaPoli],
     queryFn: async () => {
