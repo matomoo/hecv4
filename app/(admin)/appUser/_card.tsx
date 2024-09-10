@@ -15,11 +15,7 @@ const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
   return (
     <Card>
       <Space direction="vertical" >
-
-        <div>Card v2</div>
-        <div>Hello, {appUser?.username}</div>
-        <div>Link Akun : <BtnConnectAkun user={appUser as AppUser} /> </div>
-
+        <BtnConnectAkun user={appUser as AppUser} />
       </Space>
     </Card>
   );

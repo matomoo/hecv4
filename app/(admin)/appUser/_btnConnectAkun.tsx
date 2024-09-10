@@ -38,8 +38,8 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
                     mutationAdd.mutate({ ...user, nip: values.nip })
                   }} />
                 : user?.nip === undefined ? 'Need reconnect'
-                  : <Space>
-                    <div>NIP : {user?.username}</div>
+                  : <Space direction='vertical'>
+                    <div>Hello, {user?.username}</div>
                     <div>NIP : {user?.nip}</div>
                   </Space>
               }

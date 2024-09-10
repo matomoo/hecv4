@@ -9,3 +9,9 @@ export interface SchemaAntrianPoli {
   no_rawat: string;
   numPeriksaPoli: number;
 }
+export interface SchemaDaftarOperasi {
+  tgl_operasi: string;
+  no_rawat: string;
+  no_rkm_medis: string;
+  nm_pasien: string;
+}

@@ -6,6 +6,18 @@ export default async function Home() {
   return (
     <Space direction='vertical'>
       <AppUserWelcomeCard />
+      <Space direction="vertical" size="middle">
+        <Card title="Laporan Operasi" size="small"
+        >
+          <Space size="middle" >
+            <div>Menu untuk cetak Laporan Operasi</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/laporan/operasi"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+      </Space>
       <Space>
         <Card>
           <Space>
