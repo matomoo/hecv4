@@ -195,7 +195,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
               </View>
               <View style={{ flexDirection: 'column', flex: 1 }}>
                 <Text style={styles.typoH2}>Asisten Bedah :</Text>
-                <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{resultLaporanOperasi[0] && resultLaporanOperasi?.[0].nama}</Text>
+                <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{resultLaporanOperasi[0] && resultLaporanOperasi?.[0].asisten_operator1_nama}</Text>
                 <Text style={styles.typoH2}>Asisten Bedah 2 :</Text>
                 <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{'-'}</Text>
                 <Text style={styles.typoH2}>Dokter Anestesi :</Text>
@@ -205,7 +205,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
                 <Text style={styles.typoH2}>Bidan :</Text>
                 <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{'-'}</Text>
                 <Text style={styles.typoH2}>Onloop :</Text>
-                <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{resultLaporanOperasi[0] && resultLaporanOperasi?.[0].nama}</Text>
+                <Text style={[styles.typoH2Content, { marginLeft: 4 }]}>{resultLaporanOperasi[0] && resultLaporanOperasi?.[0].omloop_nama}</Text>
               </View>
             </View>
             <View style={{ flexDirection: 'column', alignItems: 'center', padding: 4, backgroundColor: '#DDDDDD' }}>
@@ -297,11 +297,11 @@ const styles = StyleSheet.create({
   },
   typoH2: {
     fontFamily: "Open Sans",
-    fontSize: 10
+    fontSize: 9
   },
   typoH2Content: {
     fontFamily: "Open Sans",
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: 600
   },
   typoH3: {

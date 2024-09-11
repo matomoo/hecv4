@@ -161,4 +161,6 @@ export interface SchemaDataLaporanOperasi {
   laporan_operasi: string;
   nama: string;
   kd_jbtn: string;
+  asisten_operator1_nama: string;
+  omloop_nama: string;
 }
