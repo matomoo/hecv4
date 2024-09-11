@@ -48,7 +48,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
       .catch((err) => console.error('Error generating QR code:', err));
   }, [resultLaporanOperasi]);
 
-  const newUmur = getDateDuration(new Date(dayjs().format('YYYY-MM-DD')), new Date(dayjs(resultLaporanOperasi?.[0].tgl_lahir).format('YYYY-MM-DD')))
+  const newUmur = getDateDuration(new Date(dayjs().format('YYYY-MM-DD')), new Date(dayjs(resultLaporanOperasi?.[0].t3_tgl_lahir).format('YYYY-MM-DD')))
 
   return (
     <Document>
@@ -85,7 +85,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
             <View style={{ flexDirection: 'column' }}>
               <Text style={styles.typoH2Content}>: {resultLaporanOperasi[0] && resultLaporanOperasi?.[0].nm_pasien}</Text>
               <Text style={styles.typoH2Content}>: {resultLaporanOperasi[0] && `${newUmur.years * -1} th ${newUmur.months * -1} bl ${newUmur.days * -1} hr `}</Text>
-              <Text style={styles.typoH2Content}>: {dayjs(resultLaporanOperasi[0] && resultLaporanOperasi?.[0].tgl_lahir).format('DD MMM YYYY')}</Text>
+              <Text style={styles.typoH2Content}>: {dayjs(resultLaporanOperasi[0] && resultLaporanOperasi?.[0].t3_tgl_lahir).format('DD MMM YYYY')}</Text>
             </View>
           </View>
           <View style={{ flexDirection: 'row', gap: 4, flex: 1 }}>
@@ -97,7 +97,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
             <View style={{ flexDirection: 'column' }}>
               <Text style={styles.typoH2Content}>: {resultLaporanOperasi[0] && resultLaporanOperasi?.[0].no_rkm_medis}</Text>
               <Text style={styles.typoH2Content}>: {'Poliklinik Mata'}</Text>
-              <Text style={styles.typoH2Content}>: {resultLaporanOperasi[0] && resultLaporanOperasi?.[0].jk === 'P' ? 'Perempuan' : 'Laki-laki'}</Text>
+              <Text style={styles.typoH2Content}>: {resultLaporanOperasi[0] && resultLaporanOperasi?.[0].t3_jk === 'P' ? 'Perempuan' : 'Laki-laki'}</Text>
             </View>
           </View>
         </View>

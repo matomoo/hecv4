@@ -163,4 +163,7 @@ export interface SchemaDataLaporanOperasi {
   kd_jbtn: string;
   asisten_operator1_nama: string;
   omloop_nama: string;
+  t3_nm_pasien: string;
+  t3_jk: string;
+  t3_tgl_lahir: string;
 }
