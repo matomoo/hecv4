@@ -1,5 +1,6 @@
 "use client"
-import { SchemaDataLaporanOperasi } from '@/app/schema/antrianPoliSchema';
+import { SchemaDataLaporanOperasi, SchemaFormUpdateLaporanOperasi } from '@/app/schema/antrianPoliSchema';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Flex, Form, Input, message } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -50,26 +51,61 @@ const FormUpdateLaporanOperasi = ({
     formData.selesai = dayjs.utc(selesaiOperasi).format("YYYY-MM-DD HH:mm:ss")
   }
 
+
+  const queryClient = useQueryClient();
+
+  const mutationUpdate = useMutation({
+    mutationFn: (newData: SchemaFormUpdateLaporanOperasi) => {
+      const dataForm = {
+        tanggalidx: newData.tanggalidx,
+        tanggal: newData.tanggal,
+        selesaioperasi: newData.selesaioperasi,
+        no_rawat: newData.no_rawat
+      }
+      const aa = axios.put('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', dataForm)
+      console.log(dataForm)
+      console.log(newData)
+      return aa
+    },
+
+    onSuccess: (savedData, newData) => {
+      queryClient.setQueryData<SchemaFormUpdateLaporanOperasi>(['updateWaktuLaporanOperasi'], newData);
+      messageApi.success("Jam operasi berhasil disimpan")
+    },
+  })
+
+
   const handleSubmit = async (values: any) => {
     try {
-      setSubmitting(true);
-      const finalValues = { ...values }
-      finalValues.no_rawat = resultLaporanOperasi[0].no_rawat
-      finalValues.mulai = values.mulai.replace(" ", "T") + "Z"
-      finalValues.mulai2 = values.mulai2.replace(" ", "T") + "Z"
-      finalValues.selesai = values.selesai.replace(" ", "T") + "Z"
+      // setSubmitting(true);
+      // const finalValues = { ...values }
+      // finalValues.no_rawat = resultLaporanOperasi[0].no_rawat
+      // finalValues.mulai = values.mulai.replace(" ", "T") + "Z"
+      // finalValues.mulai2 = values.mulai2.replace(" ", "T") + "Z"
+      // finalValues.selesai = values.selesai.replace(" ", "T") + "Z"
       // console.log(finalValues.mulai.replace(" ", "T") + "0Z")
 
-      await axios.patch('/api/v2/laporan-operasi/' + finalValues.no_rawat.replaceAll("/", "-"), finalValues);
-      router.push('/ralan/registrasi/laporan-operasi/' + finalValues.no_rawat.replaceAll("/", "-"));
-      router.refresh();
-      messageApi.success("Jam operasi berhasil disimpan")
+      mutationUpdate.mutate({
+        ...resultLaporanOperasi[0],
+        tanggal: values.mulai2,
+        selesaioperasi: values.selesai,
+        tanggalidx: values.mulai,
+      })
+
+      // await axios.patch('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', finalValues);
+      // router.push('/ralan/registrasi/laporan-operasi/' + finalValues.no_rawat.replaceAll("/", "-"));
+      // router.refresh();
+
     } catch (error) {
-      // console.log(error)
+      console.log(error)
       messageApi.error("Jam operasi gagal disimpan")
-      setSubmitting(false);
+      // setSubmitting(false);
     }
   }
+
+
+
+
 
   return (
     <>

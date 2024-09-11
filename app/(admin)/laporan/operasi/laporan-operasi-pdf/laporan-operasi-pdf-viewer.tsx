@@ -1,15 +1,11 @@
 "use client"
 import useDataLaporanOperasi from "@/app/hooks/useDataLaporanOperasi";
-import { SchemaDataLaporanOperasi } from "@/app/schema/antrianPoliSchema";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import type { TabsProps } from 'antd';
 import { Tabs } from 'antd';
-import { useState } from "react";
-// import FormUpdateLaporanOperasi from "../laporan-operasi-form/formUpdateLaporanOperasi";
-import { LaporanOperasiPdf } from "./laporan-operasi-pdf";
-import LaporanOperasiUploadBarcodeForm from "../../uploadBarcodeOperasi/formUploadBarcode";
 import FormUpdateLaporanOperasi from "../../uploadBarcodeOperasi/formUpdateLaporanOperasi";
-
+import LaporanOperasiUploadBarcodeForm from "../../uploadBarcodeOperasi/formUploadBarcode";
+import { LaporanOperasiPdf } from "./laporan-operasi-pdf";
 
 
 const PDFView = ({ params }: { params: { no_rawat: string } }) => {
@@ -20,21 +16,6 @@ const PDFView = ({ params }: { params: { no_rawat: string } }) => {
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
-
-  // const [counter, setCounter] = useState<number>(1)
-  // const [resultRegistrasiPeriksa, setResultRegistrasiPeriksa] = useState<RegistrasiPeriksaModel[]>([]);
-  // const [resultDataLaporanOperasi, setResultDataLaporanOperasi] = useState<SchemaDataLaporanOperasi[]>(dataLaporanOperasi);
-  // const [resultDokter, setResultDokter] = useState<DokterModel[]>([]);
-  // const [loading, setLoading] = useState(true)
-  // const [initialValueResumePasienExtended, setInitialValueResumePasienExtended] = useState<any>()
-  // const [imageUrl, setImageUrl] = useState<string>('');
-
-
-  // const onFinishUpload = (values: any) => {
-  //   // console.log('adakah onFinishUpload' + counter)
-  //   setCounter(counter + 1)
-  //   return true
-  // }
 
   const items: TabsProps['items'] = [
     {
@@ -72,57 +53,20 @@ const PDFView = ({ params }: { params: { no_rawat: string } }) => {
         <div>
           <LaporanOperasiUploadBarcodeForm
             registrasiPasienValues={resultDataLaporanOperasi}
-          // onFinishUpload={onFinishUpload}
           />
         </div>
-
     },
-    // {
-    //   key: '4',
-    //   label: 'Form Update Laporan Operasi',
-    //   children:
-    //     <div>
-    //       <FormUpdateLaporanOperasi
-    //         resultLaporanOperasi={resultDataLaporanOperasi!}
-    //       // onFinishUpload={onFinishUpload}
-    //       />
-    //     </div>
-
-    // },
-
+    {
+      key: '4',
+      label: 'Form Update Laporan Operasi',
+      children:
+        <div>
+          <FormUpdateLaporanOperasi
+            resultLaporanOperasi={resultDataLaporanOperasi!}
+          />
+        </div>
+    },
   ];
-
-  // const onChange = (key: string) => {
-  //   // console.log(key);
-  // };
-
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setLoading(true)
-  //       // get data registrasi periksa
-  //       const response = await fetch(`/api/regPeriksaByNoRawat?no_rawat=${no_rawat.toString().replaceAll('-', '/')}`);
-  //       const jsonData = await response.json();
-  //       setResultRegistrasiPeriksa(jsonData.data);
-
-  //       // get data laporan operasi
-  //       const response2 = await fetch(`/api/laporanOperasi?no_rawat=${no_rawat.toString().replaceAll('/', '-')}`);
-  //       const jsonData2 = await response2.json();
-  //       // console.log(jsonData2)
-  //       setResultLaporanOperasi(jsonData2.data);
-
-  //       // setImageUrl(`https://bougenvillepangkep.hijr.de/bgville/be/bgville-be-api/assets_api/upload/${resultRegistrasiPeriksa[0].pasien.nm_pasien} ${resultRegistrasiPeriksa[0].no_rawat}.jpg`)
-  //       setLoading(false)
-  //       // console.log(jsonData.data)
-  //     } catch (error) {
-  //       setLoading(false)
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [no_rawat, counter]);
 
   return (
     <div className="">

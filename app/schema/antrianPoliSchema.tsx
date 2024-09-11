@@ -15,6 +15,12 @@ export interface SchemaDaftarOperasi {
   no_rkm_medis: string;
   nm_pasien: string;
 }
+export interface SchemaFormUpdateLaporanOperasi {
+  tanggalidx: string;
+  tanggal: string;
+  selesaioperasi: string;
+  no_rawat: string;
+}
 
 export interface SchemaDataLaporanOperasi {
   no_rawat: string;
