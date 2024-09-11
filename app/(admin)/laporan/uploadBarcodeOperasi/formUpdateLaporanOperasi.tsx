@@ -62,10 +62,7 @@ const FormUpdateLaporanOperasi = ({
         selesaioperasi: newData.selesaioperasi,
         no_rawat: newData.no_rawat
       }
-      const aa = axios.put('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', dataForm)
-      console.log(dataForm)
-      console.log(newData)
-      return aa
+      return axios.put('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', dataForm)
     },
 
     onSuccess: (savedData, newData) => {
@@ -77,13 +74,6 @@ const FormUpdateLaporanOperasi = ({
 
   const handleSubmit = async (values: any) => {
     try {
-      // setSubmitting(true);
-      // const finalValues = { ...values }
-      // finalValues.no_rawat = resultLaporanOperasi[0].no_rawat
-      // finalValues.mulai = values.mulai.replace(" ", "T") + "Z"
-      // finalValues.mulai2 = values.mulai2.replace(" ", "T") + "Z"
-      // finalValues.selesai = values.selesai.replace(" ", "T") + "Z"
-      // console.log(finalValues.mulai.replace(" ", "T") + "0Z")
 
       mutationUpdate.mutate({
         ...resultLaporanOperasi[0],
@@ -92,14 +82,9 @@ const FormUpdateLaporanOperasi = ({
         tanggalidx: values.mulai,
       })
 
-      // await axios.patch('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', finalValues);
-      // router.push('/ralan/registrasi/laporan-operasi/' + finalValues.no_rawat.replaceAll("/", "-"));
-      // router.refresh();
-
     } catch (error) {
       console.log(error)
       messageApi.error("Jam operasi gagal disimpan")
-      // setSubmitting(false);
     }
   }
 
