@@ -21,12 +21,7 @@ import { v4 as uuidv4 } from 'uuid';
 // import { HelveticaBold } from "../../../../../public/fonts/helvetica-bold.ttf";
 
 
-//#region - dayjs setting
-dayjs.locale("id");
-dayjs.extend(utc)
-dayjs.extend(timezone);
-dayjs.tz.setDefault("Asia/Makassar");
-//#endregion
+
 
 
 interface IPage {
@@ -35,6 +30,13 @@ interface IPage {
 
 
 export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
+
+  //#region - dayjs setting
+  dayjs.locale("id");
+  dayjs.extend(utc)
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault("Asia/Makassar");
+  //#endregion
 
   const [qrImage, setQrImage] = useState<string>('no data');
   let myuuid = uuidv4();
@@ -109,7 +111,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
           </View>
           <View style={{ flexDirection: 'row', flex: 1 }}>
             <Text style={styles.typoH2}>Waktu : </Text>
-            <Text style={styles.typoH2Content}>{dayjs.utc(resultLaporanOperasi[0] && resultLaporanOperasi?.[0].jam_rawat).format('HH:mm:ss')}</Text>
+            <Text style={styles.typoH2Content}>{resultLaporanOperasi[0] && resultLaporanOperasi?.[0].jam_rawat}</Text>
           </View>
           <View style={{ flexDirection: 'row', flex: 2 }}>
             <Text style={styles.typoH2}>Alergi : </Text>
