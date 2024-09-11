@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["bougenvillepangkep.hijr.de", "hec1.hijr.de"],
+  },
   async headers() {
     return [
       {

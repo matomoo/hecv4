@@ -28,7 +28,7 @@ export const columns: any = [
           <Button
             size="middle"
             onClick={() =>
-              window.open('/ralan/registrasi/laporan-operasi/' + record.no_rawat.replaceAll('/', '-'))
+              window.open('/laporan/operasi/' + record.no_rawat.replaceAll('/', '-'))
             }
           >
             <i className="ri-kanban-view"></i>
@@ -37,7 +37,7 @@ export const columns: any = [
           <Button
             size="middle"
             onClick={() =>
-              window.open('/ralan/laporanOperasi/FormUploadBarcode/' + record.no_rawat.replaceAll('/', '-'))
+              window.open('/laporan/uploadBaroceOperasi/' + record.no_rawat.replaceAll('/', '-'))
             }
           >
             <i className="ri-barcode-line"></i>
