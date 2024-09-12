@@ -9,7 +9,6 @@ import utc from 'dayjs/plugin/utc';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-
 interface IPage {
   resultLaporanOperasi: SchemaDataLaporanOperasi[]
 }
@@ -30,27 +29,19 @@ const FormUpdateLaporanOperasi = ({
 
   const format = 'HH:mm';
 
-  // laporan operasi mulai
-  // console.log(resultLaporanOperasi?.[0].tanggal)
   const mulaiOperasi = resultLaporanOperasi?.[0].tanggal
-  // laporan operasi selesai
   const selesaiOperasi = resultLaporanOperasi?.[0].selesaioperasi
-  const router = useRouter();
-
 
   let formData: any = {}
   let mode = 'new'
   if (resultLaporanOperasi === null) {
     mode = 'new'
-    // formData.mulai = dayjs.utc(mulaiOperasi).format("YYYY-MM-DD HH:mm:ss")
-    // formData.selesai = dayjs.utc(selesaiOperasi).format("YYYY-MM-DD HH:mm:ss")
   } else {
     mode = 'update'
     formData.mulai = dayjs.utc(mulaiOperasi).format("YYYY-MM-DD HH:mm:ss")
     formData.mulai2 = dayjs.utc(mulaiOperasi).format("YYYY-MM-DD HH:mm:ss")
     formData.selesai = dayjs.utc(selesaiOperasi).format("YYYY-MM-DD HH:mm:ss")
   }
-
 
   const queryClient = useQueryClient();
 
@@ -62,7 +53,7 @@ const FormUpdateLaporanOperasi = ({
         selesaioperasi: newData.selesaioperasi,
         no_rawat: newData.no_rawat
       }
-      return axios.put('http://localhost/hec/apiv3/updateWaktuLaporanOperasi', dataForm)
+      return axios.put('https://hec1.hijr.de/hecapiv3/updateWaktuLaporanOperasi', dataForm)
     },
 
     onSuccess: (savedData, newData) => {
@@ -87,10 +78,6 @@ const FormUpdateLaporanOperasi = ({
       messageApi.error("Jam operasi gagal disimpan")
     }
   }
-
-
-
-
 
   return (
     <>
