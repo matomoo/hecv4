@@ -9,7 +9,7 @@ import { CloseCircleOutlined } from '@ant-design/icons';
 const BtnConnectAkun = ({ user }: { user: AppUser }) => {
   const queryClient = useQueryClient();
 
-  const mutationAdd = useMutation({
+  const mutation = useMutation({
     mutationFn: (newData: AppUser) => {
       return axios.patch('/api/appUser/' + newData.clerkUserId, newData)
     },
@@ -21,13 +21,13 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
 
   return (
     <div>
-      {mutationAdd.isPending ? (
+      {mutation.isPending ? (
         'Connecting Akun...'
       ) : (
         <>
           <Space direction='vertical'>
-            {mutationAdd.isError ? (
-              <div>An error occurred: {mutationAdd.error.message}</div>
+            {mutation.isError ? (
+              <div>An error occurred: {mutation.error.message}</div>
             ) : null}
 
             <Space>
@@ -35,23 +35,22 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
                 <ConnectAkunForm
                   user={user}
                   handlerSubmit={(values) => {
-                    mutationAdd.mutate({ ...user, nip: values.nip })
+                    mutation.mutate({ ...user, nip: values.nip })
                   }} />
                 : user?.nip === undefined ? 'Need reconnect'
-                  : <Space direction='vertical'>
-                    <div>Hello, {user?.username}</div>
-                    <div>NIP : {user?.nip}</div>
+                  : <Space>
+                    <Space direction='vertical'>
+                      <div>Hello, {user?.username}</div>
+                      <div>NIP : {user?.nip}</div>
+                    </Space>
+                    <Button danger
+                      type='text'
+                      size='small'
+                      shape="circle" icon={<CloseCircleOutlined />}
+                      onClick={() => {
+                        mutation.mutate({ ...user, nip: null })
+                      }} />
                   </Space>
-              }
-
-              {(user?.nip !== null || user?.nip !== undefined) &&
-                <Button danger
-                  type='text'
-                  size='small'
-                  shape="circle" icon={<CloseCircleOutlined />}
-                  onClick={() => {
-                    mutationAdd.mutate({ ...user, nip: null })
-                  }} />
               }
             </Space>
           </Space>

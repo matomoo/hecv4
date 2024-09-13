@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { Button, Form, Input, Upload, message } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
@@ -5,6 +6,8 @@ import { UploadChangeParam, RcFile } from 'antd/lib/upload/interface';
 import axios from 'axios';
 import Image from 'next/image'
 import { v4 as uuidv4 } from 'uuid';
+import { usePathname, useRouter } from "next/navigation";
+
 
 export interface LaporanOperasiUploadBarcodeProps {
   registrasiPasienValues: any;
@@ -18,6 +21,9 @@ const LaporanOperasiUploadBarcodeForm = ({
   onFinishUpload,
 }: LaporanOperasiUploadBarcodeProps) => {
 
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [uploading, setUploading] = useState(false);
 
   const apiUrl = 'https://hec1.hijr.de/hec/be/antrian/assets_api/upload_api.php';
@@ -27,7 +33,7 @@ const LaporanOperasiUploadBarcodeForm = ({
   const handleUpload = async (file: RcFile) => {
     const formData = new FormData();
 
-    const fileName = `${registrasiPasienValues[0].pasien.nm_pasien} ${registrasiPasienValues[0].no_rawat.replaceAll('/', '-')}`
+    const fileName = `${registrasiPasienValues[0].nm_pasien} ${registrasiPasienValues[0].no_rawat.replaceAll('/', '-')}`
     // console.log(fileName)
     const modifiedFile = new File(
       [file],
@@ -53,13 +59,12 @@ const LaporanOperasiUploadBarcodeForm = ({
       );
 
       if (response.status === 200) {
-        // console.log(response)
-        // console.log('Image uploaded successfully');
+        // console.log(pathname)
+        router.push(`${pathname}`);
+        router.refresh();
         message.success('Image uploaded successfully');
 
-        // Handle any further actions after successful upload
       } else {
-        // console.log('Failed to upload image');
         message.error('Failed to upload image');
       }
     } catch (error) {
@@ -80,22 +85,22 @@ const LaporanOperasiUploadBarcodeForm = ({
       message.error('You can only upload JPG/JPEG file!');
       return false;
     }
-    // try {
-    //   const fileName = `${registrasiPasienValues[0].pasien.nm_pasien} ${registrasiPasienValues[0].no_rawat.replaceAll('/', '-')}`
-    //   // console.log(fileName)
-    //   const modifiedFile = new File(
-    //     [file],
-    //     fileName + ".jpg",
-    //     // { type: file.type }
-    //     // { type: 'image/jpeg' }
-    //   );
+    try {
+      const fileName = `${registrasiPasienValues[0].nm_pasien} ${registrasiPasienValues[0].no_rawat.replaceAll('/', '-')}`
+      // console.log(fileName)
+      const modifiedFile = new File(
+        [file],
+        fileName + ".jpg",
+        //     // { type: file.type }
+        //     // { type: 'image/jpeg' }
+      );
 
-    //   handleUpload(modifiedFile as RcFile);
+      handleUpload(modifiedFile as RcFile);
 
-    return true;
-    // } catch (error) {
-    //   console.log(error)
-    // }
+      return true;
+    } catch (error) {
+      // console.log(error)
+    }
 
   };
 

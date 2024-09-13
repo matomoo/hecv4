@@ -8,9 +8,9 @@ import BtnConnectAkun from "./_btnConnectAkun";
 
 const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
 
-  const { data: appUser, isError, isLoading } = useAppUser(clerkId);
+  const { data: appUser, isError, error, isLoading } = useAppUser(clerkId);
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>error</p>;
+  if (isError) return <p>{error.message}</p>;
 
   return (
     <Card>
