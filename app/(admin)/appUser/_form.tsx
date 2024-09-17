@@ -46,6 +46,9 @@ const ConnectAkunForm = (
               })}
             </Select>
           </Form.Item>
+          <Form.Item label="Password" name="password" >
+            <Input />
+          </Form.Item>
 
 
           {/* TODO : add loading indicator icon */}

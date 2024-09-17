@@ -10,8 +10,9 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
+
     mutationFn: (newData: AppUser) => {
-      return axios.patch('/api/appUser/' + newData.clerkUserId, newData)
+      return axios.put('https://hec1.hijr.de/hecapiv3/updateNip_AppUser', newData)
     },
 
     onSuccess: (savedData, newData) => {

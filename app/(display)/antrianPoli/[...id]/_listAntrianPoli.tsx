@@ -6,7 +6,6 @@ const ListAntrianPoli = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  console.log(dataAntrianPoli)
   return (
     <div>
       <Flex vertical className='mt-8' >
@@ -21,7 +20,7 @@ const ListAntrianPoli = () => {
               >
                 <Typography.Text strong >{item.nm_pasien}</Typography.Text>
                 <Typography.Text code type={item.numPeriksaPoli > 0 ? `success` : 'secondary'}>{item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}</Typography.Text>
-                <Typography.Text type="secondary">{item.nm_dokter}</Typography.Text>
+                {/* <Typography.Text type="secondary">{item.nm_dokter}</Typography.Text> */}
               </List.Item>
             )}
           />
