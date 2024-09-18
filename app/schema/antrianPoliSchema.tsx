@@ -22,6 +22,7 @@ export interface SchemaAntrianPoli {
   nm_dokter: string;
   no_rawat: string;
   numPeriksaPoli: number;
+  alamat: string;
 }
 export interface SchemaDaftarOperasi {
   tgl_operasi: string;

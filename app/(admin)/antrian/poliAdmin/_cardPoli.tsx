@@ -7,10 +7,7 @@ const CardPoli = ({ namaPoli }: { namaPoli: string }) => {
   const { data: dataAntrianPeriksaPoli, isError, error, isLoading } = useAntrianPeriksaPoli(namaPoli);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
-  // action openPoli:
-  // - setStatus Open
-  // - display nama dokter
-  // - display jadwal dokter
+
   return (
     <Card title={namaPoli}
       extra={<BtnSetPoliOff user={dataAntrianPeriksaPoli} namaPoli={namaPoli} />}

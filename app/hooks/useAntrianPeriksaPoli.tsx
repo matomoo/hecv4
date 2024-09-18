@@ -7,7 +7,7 @@ const useAntrianPeriksaPoli = (namaPoli: string) => {
     queryKey: ["antrianPeriksaPoli" + namaPoli],
     queryFn: async () => {
       const response = await axios.get("https://hec1.hijr.de/hecapiv3/getByPoliTblxAntrianPoli/" + namaPoli);
-      return response.data.response.data[0];
+      return response.data.response.data[0][0];
     },
     staleTime: 10 * 1000, //10s
     // refetchInterval: 10 * 1000, //10s

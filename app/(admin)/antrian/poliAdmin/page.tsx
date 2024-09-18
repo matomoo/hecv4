@@ -11,9 +11,9 @@ const AdminAntrianPoli = () => {
   return (
     <Flex vertical >
       <Title>Menu Admin Antrian Poli </Title>
-      <div className='flex w-full gap-4 p-4 bg-primary rounded-lg'>
-        <div className='w-6/12' ><CardPoli namaPoli='POLI_1' /></div>
-        <div className='w-6/12' ><CardPoli namaPoli='POLI_2' /></div>
+      <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 p-4 bg-primary rounded-lg'>
+        <div className='' ><CardPoli namaPoli='POLI_1' /></div>
+        <div className='' ><CardPoli namaPoli='POLI_2' /></div>
       </div>
       <ListAntrianPoli />
     </Flex>

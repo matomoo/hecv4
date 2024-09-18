@@ -1,5 +1,5 @@
 import useAntrianPoli from '@/app/hooks/useAntrianPoli';
-import { Flex, List, Typography } from 'antd';
+import { Flex, List, Space, Typography } from 'antd';
 import BtnSetPoli from './_btnSetPoli';
 
 const ListAntrianPoli = () => {
@@ -22,9 +22,16 @@ const ListAntrianPoli = () => {
                   <BtnSetPoli key={'2'} user={item} namaPoli={'POLI_2'} />
                 ]}
               >
-                <Typography.Text strong>{item.nm_pasien}</Typography.Text>
-                <Typography.Text code type={item.numPeriksaPoli > 0 ? `success` : 'secondary'}>{item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}</Typography.Text>
-                <Typography.Text type="secondary">{item.nm_dokter}</Typography.Text>
+                <Space direction='vertical'>
+                  <Space wrap><Typography.Text strong>{item.nm_pasien}</Typography.Text>
+                    <Typography.Text code type={item.numPeriksaPoli > 0 ? `success` : 'secondary'}>{item.numPeriksaPoli > 0 ? 'Sementara periksa' : 'Menunggu'}</Typography.Text>
+                  </Space>
+                  <Space><i className="ri-user-fill"></i><Typography.Text type="secondary">{item.nm_dokter}</Typography.Text></Space>
+                  <Space><i className="ri-article-fill"></i><Typography.Text type="secondary">{item.no_rkm_medis}</Typography.Text></Space>
+                  <Space><i className="ri-home-heart-fill"></i><Typography.Text type="secondary">{item.alamat}</Typography.Text></Space>
+
+                </Space>
+
               </List.Item>
             );
           }}
