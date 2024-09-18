@@ -18,6 +18,17 @@ export default async function Home() {
           </Space>
         </Card>
       </Space>
+      <Space direction='vertical'>
+        <Card>
+          <Space>
+            <div>Menu Admin Antrian Poli</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrian/poliAdmin"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+      </Space>
       <Space>
         <Card>
           <Space>
@@ -30,13 +41,23 @@ export default async function Home() {
         </Card>
         <Card>
           <Space>
-            <div>Menu Admin Antrian Poli</div>
-            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrian/poliAdmin"
+            <div>Display Antrian Admisi</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrianAdmisi"
               icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
             >
             </Button>
           </Space>
         </Card>
+        <Card>
+          <Space>
+            <div>Display Antrian Visus</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrianVisus"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+
         <Card>
           <Space>
             <div>Display Antrian Poli 1</div>
