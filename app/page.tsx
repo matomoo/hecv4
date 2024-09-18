@@ -5,7 +5,7 @@ import AppUserWelcomeCard from './(admin)/appUser/page';
 export default async function Home() {
   return (
     <Space direction='vertical'>
-      <AppUserWelcomeCard />
+      {/* <AppUserWelcomeCard /> */}
       <Space direction="vertical" size="middle">
         <Card title="Laporan Operasi" size="small"
         >
