@@ -21,6 +21,15 @@ export default async function Home() {
       <Space>
         <Card>
           <Space>
+            <div>Display Antrian All</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrianAll"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
+        <Card>
+          <Space>
             <div>Menu Admin Antrian Poli</div>
             <Button className="hover:bg-white" type="text" htmlType="submit" href="/antrian/poliAdmin"
               icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}

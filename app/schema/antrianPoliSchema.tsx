@@ -1,3 +1,17 @@
+
+export interface SchemaAntrianAdmisi {
+  tgl_registrasi: string;
+  no_rawat: string;
+  no_rkm_medis: string;
+  nm_pasien: string;
+}
+
+export interface SchemaAntrianVisus {
+  no_rawat: string;
+  no_rkm_medis: string;
+  nm_pasien: string;
+}
+
 export interface SchemaAntrianPoli {
   no_reg: string;
   no_rkm_medis: string;
