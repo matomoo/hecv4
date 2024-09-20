@@ -6,7 +6,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 
 interface IPage {
@@ -28,6 +28,8 @@ const FormUpdateLaporanOperasi = ({
   const [isSubmitting, setSubmitting] = React.useState(false);
 
   const format = 'HH:mm';
+  const router = useRouter();
+  const pathname = usePathname();
 
   const mulaiOperasi = resultLaporanOperasi?.[0].tanggal
   const selesaiOperasi = resultLaporanOperasi?.[0].selesaioperasi
@@ -59,6 +61,11 @@ const FormUpdateLaporanOperasi = ({
     onSuccess: (savedData, newData) => {
       queryClient.setQueryData<SchemaFormUpdateLaporanOperasi>(['updateWaktuLaporanOperasi'], newData);
       messageApi.success("Jam operasi berhasil disimpan")
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+
     },
   })
 
