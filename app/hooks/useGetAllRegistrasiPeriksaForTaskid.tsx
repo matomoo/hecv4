@@ -3,7 +3,7 @@ import axios from "axios";
 import { Schema_GetAllRegistrasiPeriksaForTaskid } from '../schema/antrianPoliSchema';
 import { apiUrl } from '@/constants';
 
-const useGetAllRegistrasiPeriksaForTaskid = () => {
+const Use_GetAllRegistrasiPeriksaForTaskid = () => {
   return useQuery<Schema_GetAllRegistrasiPeriksaForTaskid[], Error>({
     queryKey: ["getAllRegistrasiPeriksaForTaskid"],
     queryFn: async () => {
@@ -19,4 +19,4 @@ const useGetAllRegistrasiPeriksaForTaskid = () => {
   });
 };
 
-export default useGetAllRegistrasiPeriksaForTaskid;
+export default Use_GetAllRegistrasiPeriksaForTaskid;
