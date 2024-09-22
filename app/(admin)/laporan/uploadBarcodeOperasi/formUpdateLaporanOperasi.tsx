@@ -1,5 +1,6 @@
 "use client"
 import { SchemaDataLaporanOperasi, SchemaFormUpdateLaporanOperasi } from '@/app/schema/antrianPoliSchema';
+import { apiUrl } from '@/constants';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Flex, Form, Input, message } from "antd";
 import axios from "axios";
@@ -55,7 +56,7 @@ const FormUpdateLaporanOperasi = ({
         selesaioperasi: newData.selesaioperasi,
         no_rawat: newData.no_rawat
       }
-      return axios.put('https://hec1.hijr.de/hecapiv3/updateWaktuLaporanOperasi', dataForm)
+      return axios.put(apiUrl + "updateWaktuLaporanOperasi", dataForm)
     },
 
     onSuccess: (savedData, newData) => {

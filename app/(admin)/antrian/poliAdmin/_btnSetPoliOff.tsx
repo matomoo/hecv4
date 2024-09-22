@@ -1,3 +1,4 @@
+import { apiUrl } from '@/constants';
 import { tblx_antrian_poli } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from 'antd';
@@ -18,7 +19,7 @@ const BtnSetPoliOff = ({ user, namaPoli }: { user?: any, namaPoli: string }) => 
 
   const mutationUpdate = useMutation({
     mutationFn: (newData: tblx_antrian_poli) => {
-      return axios.patch('/api/antrianPoli/' + namaPoli, { ...newData, no_rkm_medis: null, nm_dokter: null, nm_pasien: null })
+      return axios.put(apiUrl + 'updateAntrianPeriksaPoli/' + namaPoli, { ...newData, no_rkm_medis: null, nm_dokter: null, nm_pasien: null, no_rawat: null, kd_dokter: null })
     },
 
     onSuccess: (savedData, newData) => {

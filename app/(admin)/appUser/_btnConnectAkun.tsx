@@ -4,6 +4,7 @@ import { Button, Space } from 'antd';
 import axios from 'axios';
 import ConnectAkunForm from './_form';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { apiUrl } from '@/constants';
 
 
 const BtnConnectAkun = ({ user }: { user: AppUser }) => {
@@ -12,7 +13,7 @@ const BtnConnectAkun = ({ user }: { user: AppUser }) => {
   const mutation = useMutation({
 
     mutationFn: (newData: AppUser) => {
-      return axios.put('https://hec1.hijr.de/hecapiv3/updateNip_AppUser', newData)
+      return axios.put(apiUrl + "updateNip_AppUser", newData)
     },
 
     onSuccess: (savedData, newData) => {

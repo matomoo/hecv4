@@ -1,9 +1,7 @@
 "use client";
 import Loader from "@/app/components/loader";
-import { useAppUserOptions } from '@/app/hooks/useAppUserOptions';
 import { UserButton } from "@clerk/nextjs";
 import { AppUser } from "@prisma/client";
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 

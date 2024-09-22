@@ -1,3 +1,7 @@
+export const apiUrl = "https://hec1.hijr.de/hecapiv3/";
+
+// delete
+
 export const optionHidupMeninggal = [
   { value: "Hidup", label: "Hidup" },
   { value: "Meninggal", label: "Meninggal" },

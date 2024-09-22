@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 import { Schema_GetAllRegistrasiPeriksaForTaskid } from '../schema/antrianPoliSchema';
+import { apiUrl } from '@/constants';
 
 const useGetAllRegistrasiPeriksaForTaskid = () => {
   return useQuery<Schema_GetAllRegistrasiPeriksaForTaskid[], Error>({
     queryKey: ["getAllRegistrasiPeriksaForTaskid"],
     queryFn: async () => {
-      const response = await axios.get("https://hec1.hijr.de/hecapiv3/getAllRegistrasiPeriksaForTaskid");
+      const response = await axios.get(apiUrl + "getAllRegistrasiPeriksaForTaskid");
       return response.data.response.data[0];
     },
     staleTime: 30 * 1000, //10s
