@@ -1,0 +1,49 @@
+"use client"
+import useMjknGetTaskid from '@/app/hooks/useMjknGetTaskid';
+import { Schema_GetTaskId } from '@/app/schema/antrianPoliSchema';
+import { Space } from 'antd';
+import dayjs from "dayjs";
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import UpdateTaskId from './_update';
+// var customParseFormat = require("dayjs/plugin/customParseFormat");
+
+//#region - dayjs setting
+dayjs.locale("id");
+dayjs.extend(utc)
+dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
+dayjs.tz.setDefault("Asia/Makassar");
+//#endregion
+
+const CardDetail = ({ kodeBooking }: { kodeBooking: string }) => {
+  const { data: dataTaskid, isError, error, isLoading } = useMjknGetTaskid(kodeBooking);
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>{error.message}</p>;
+
+  const timeNow = dayjs().format("DD-MM-YYYY HH:mm:ss")
+  const timeTid = dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true).format("DD-MM-YYYY HH:mm:ss")
+  const minuteDiff = dayjs().diff(dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true), "minute")
+  const lastTid = dataTaskid?.at(dataTaskid.length - 1)?.taskid
+  return (
+    <div>
+      <Space direction='vertical'>
+        {/* <div>waktu sekarang : {timeNow}</div>
+        <div>waktu terakhir : {timeTid}</div>
+        <div>Minute diff : {minuteDiff}</div>
+        <div>Last Task Id : {lastTid}</div> */}
+        <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} />
+      </Space>
+      {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
+        return (
+          <div key={idx}>
+            <Space>{elm.taskid} {elm.waktu} {elm.wakturs}</Space>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+export default CardDetail

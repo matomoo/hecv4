@@ -5,6 +5,22 @@ export interface SchemaAntrianAdmisi {
   no_rkm_medis: string;
   nm_pasien: string;
 }
+export interface Schema_GetTaskId {
+  kodebooking: string;
+  taskid: string;
+  taskname: string;
+  waktu: string;
+  wakturs: string;
+
+}
+
+export interface Schema_GetAllRegistrasiPeriksaForTaskid {
+  no_rawat: string;
+  no_rkm_medis: string;
+  nm_pasien: string;
+  nobooking: string;
+  no_sep: string;
+}
 
 export interface SchemaAntrianVisus {
   no_rawat: string;

@@ -28,6 +28,15 @@ export default async function Home() {
             </Button>
           </Space>
         </Card>
+        <Card>
+          <Space>
+            <div>Menu Task Id</div>
+            <Button className="hover:bg-white" type="text" htmlType="submit" href="/autoTaskid"
+              icon={<i className="ri-arrow-right-circle-line text-3xl"></i>}
+            >
+            </Button>
+          </Space>
+        </Card>
       </Space>
       <Space>
         <Card>
