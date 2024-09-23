@@ -3,6 +3,7 @@ import useMjknGetTaskid from '@/app/hooks/useMjknGetTaskid';
 import { Schema_GetAllRegistrasiPeriksaForTaskid } from '@/app/schema/antrianPoliSchema'
 import React from 'react'
 import CardDetail from './_card';
+import { Space, Tag } from 'antd';
 
 const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[] }) => {
 
@@ -10,7 +11,12 @@ const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[]
     <div>{data.map((elm: Schema_GetAllRegistrasiPeriksaForTaskid) => {
       return (
         <div key={elm.no_rawat} className='my-4'>
-          <div>{elm.nm_pasien} / {elm.no_rawat} / {elm.no_sep} / {elm.nobooking}  </div>
+          <Space>
+            {elm.nm_pasien}
+            <Tag>{elm.no_rawat}</Tag>
+            <Tag>{elm.no_sep}</Tag>
+            <Tag>{elm.nobooking}</Tag>
+          </Space>
           <CardDetail kodeBooking={elm.nobooking ?? elm.no_rawat} noSep={elm.no_sep} />
         </div>
       )

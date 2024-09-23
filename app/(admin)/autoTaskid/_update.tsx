@@ -4,6 +4,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { HandlerUpdateTaskId } from '@/app/api/mjkn/handlerUpdateTaskId';
+import { Tag } from 'antd';
 
 //#region - dayjs setting
 // dayjs.locale("id");
@@ -28,10 +29,10 @@ const UpdateTaskId = (
   //   return <div>no proses</div>
 
   if (taskId === 5 || taskId === 7)
-    return <div>Task Id Completed</div>
+    return <Tag color="success">Task Id Completed</Tag>
 
   if (taskId === undefined && Number.isNaN(minuteDiff) && noSep === undefined)
-    return <div>Task Id No Need</div>
+    return <div color="default">Task Id No Need</div>
 
   // console.log(taskId)
   // console.log(waktu)
@@ -150,7 +151,7 @@ const UpdateTaskId = (
 
 
   return (
-    <div>UpdateTaskId : {taskId}</div>
+    <Tag color={taskId === 99 ? 'default' : 'processing'}>Last Task Id : {taskId}</Tag>
   )
 }
 

@@ -1,7 +1,7 @@
 "use client"
 import useMjknGetTaskid from '@/app/hooks/useMjknGetTaskid';
 import { Schema_GetTaskId } from '@/app/schema/antrianPoliSchema';
-import { Space } from 'antd';
+import { Space, Tag } from 'antd';
 import dayjs from "dayjs";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
@@ -30,20 +30,21 @@ const CardDetail = ({ kodeBooking, noSep }: { kodeBooking: string, noSep: string
   return (
     <div>
       <Space direction='vertical'>
-        <div>waktu sekarang : {timeNow} WITA</div>
+        {/* <div>waktu sekarang : {timeNow} WITA</div>
         <div>waktu terakhir : {timeTid} WITA</div>
         <div>Minute diff : {minuteDiff}</div>
         <div>Last Task Id : {lastTid}</div>
-        <div>No Sep: {noSep}</div>
+        <div>No Sep: {noSep}</div> */}
         <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} noSep={noSep} />
+
+        {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
+          return (
+            <div key={idx} className='pl-4'>
+              <Tag>{elm.taskid} - {elm.wakturs}</Tag>
+            </div>
+          )
+        })}
       </Space>
-      {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
-        return (
-          <div key={idx}>
-            <Space>{elm.taskid} {elm.wakturs}</Space>
-          </div>
-        )
-      })}
     </div>
   )
 }
