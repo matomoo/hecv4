@@ -40,7 +40,7 @@ const UpdateTaskId = (
   // console.log(taskId)
   // console.log(waktu)
 
-  if (taskId === undefined && noSep !== undefined) {
+  if (taskId === undefined && (noSep !== undefined || noSep !== null)) {
     console.log('taskid undefined > send taskId 1 and noBooking ' + noBooking)
 
     const waktuForTid23 = dayjs().unix() * 1000
