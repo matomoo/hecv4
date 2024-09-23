@@ -28,11 +28,14 @@ const UpdateTaskId = (
   // if (noBooking !== '20240923000019')
   //   return <div>no proses</div>
 
+  if (noSep === undefined || noSep === null)
+    return <Tag color="default">No SEP</Tag>
+
   if (taskId === 5 || taskId === 7)
     return <Tag color="success">Task Id Completed</Tag>
 
-  if (taskId === undefined && Number.isNaN(minuteDiff) && noSep === undefined)
-    return <div color="default">Task Id No Need</div>
+  if (taskId === undefined && Number.isNaN(minuteDiff) && (noSep === undefined || noSep === null))
+    return <Tag color="default">Task Id No Need</Tag>
 
   // console.log(taskId)
   // console.log(waktu)

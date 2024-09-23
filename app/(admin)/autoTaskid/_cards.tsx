@@ -8,9 +8,9 @@ import { Space, Tag } from 'antd';
 const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[] }) => {
 
   return (
-    <div>{data.map((elm: Schema_GetAllRegistrasiPeriksaForTaskid) => {
+    <div>{data.map((elm: Schema_GetAllRegistrasiPeriksaForTaskid, idx: number) => {
       return (
-        <div key={elm.no_rawat} className='my-4'>
+        <div key={idx} className='my-4'>
           <Space>
             {elm.nm_pasien}
             <Tag>{elm.no_rawat}</Tag>
