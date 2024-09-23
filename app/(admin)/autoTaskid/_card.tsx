@@ -17,28 +17,30 @@ dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Asia/Makassar");
 //#endregion
 
-const CardDetail = ({ kodeBooking }: { kodeBooking: string }) => {
+const CardDetail = ({ kodeBooking, noSep }: { kodeBooking: string, noSep: string }) => {
   const { data: dataTaskid, isError, error, isLoading } = useMjknGetTaskid(kodeBooking);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
   const timeNow = dayjs().format("DD-MM-YYYY HH:mm:ss")
-  const timeTid = dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true).format("DD-MM-YYYY HH:mm:ss")
-  const minuteDiff = dayjs().diff(dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true), "minute")
+  // const timeTid = dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true).format("DD-MM-YYYY HH:mm:ss")
+  const timeTid = dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true).add(1, 'hour').format("DD-MM-YYYY HH:mm:ss")
+  const minuteDiff = dayjs().diff(dayjs(dataTaskid?.at(dataTaskid.length - 1)?.wakturs.slice(0, -4), "DD-MM-YYYY HH:mm:ss", true).add(1, 'hour'), "minute")
   const lastTid = dataTaskid?.at(dataTaskid.length - 1)?.taskid
   return (
     <div>
       <Space direction='vertical'>
-        {/* <div>waktu sekarang : {timeNow}</div>
-        <div>waktu terakhir : {timeTid}</div>
+        <div>waktu sekarang : {timeNow} WITA</div>
+        <div>waktu terakhir : {timeTid} WITA</div>
         <div>Minute diff : {minuteDiff}</div>
-        <div>Last Task Id : {lastTid}</div> */}
-        <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} />
+        <div>Last Task Id : {lastTid}</div>
+        <div>No Sep: {noSep}</div>
+        <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} noSep={noSep} />
       </Space>
       {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
         return (
           <div key={idx}>
-            <Space>{elm.taskid} {elm.waktu} {elm.wakturs}</Space>
+            <Space>{elm.taskid} {elm.wakturs}</Space>
           </div>
         )
       })}

@@ -11,7 +11,7 @@ const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[]
       return (
         <div key={elm.no_rawat} className='my-4'>
           <div>{elm.nm_pasien} / {elm.no_rawat} / {elm.no_sep} / {elm.nobooking}  </div>
-          <CardDetail kodeBooking={elm.nobooking ?? elm.no_rawat} />
+          <CardDetail kodeBooking={elm.nobooking ?? elm.no_rawat} noSep={elm.no_sep} />
         </div>
       )
     })}</div>
