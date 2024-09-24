@@ -152,6 +152,8 @@ const UpdateTaskId = (
     }))
   }
 
+  if (taskId === null || taskId === undefined)
+    taskId === 98
 
   return (
     <Tag color={taskId === 99 ? 'default' : 'processing'}>Last Task Id : {taskId}</Tag>
