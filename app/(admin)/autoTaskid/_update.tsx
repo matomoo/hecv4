@@ -50,7 +50,7 @@ const UpdateTaskId = (
   }
 
 
-  if (taskId === 1 && minuteDiff > 2) {
+  if (taskId === 1 && minuteDiff > 1) {
 
     console.log('send taskId 123 and noBooking ' + noBooking)
 
@@ -77,7 +77,7 @@ const UpdateTaskId = (
     }))
   }
 
-  if (taskId === 2 && minuteDiff > 2) {
+  if (taskId === 2 && minuteDiff > 1) {
     console.log('send taskId 23 and noBooking ' + noBooking)
 
     const addMinut23 = Math.floor(Math.random() * 5) + 5
@@ -91,7 +91,7 @@ const UpdateTaskId = (
     res.then(a => console.log(a))
   }
 
-  if (taskId === 3 && minuteDiff > 10) {
+  if (taskId === 3 && minuteDiff > 5) {
     console.log('send taskId 4 and minuteDiff > 15 and noBooking ' + noBooking)
     const addMinut34 = Math.floor(Math.random() * 5) + 10
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
@@ -126,7 +126,7 @@ const UpdateTaskId = (
     }))
   }
 
-  if (taskId === 4 && minuteDiff > 15) {
+  if (taskId === 4 && minuteDiff > 5) {
     console.log('send taskId 5 and minuteDiff > 15 and noBooking ' + noBooking)
     const addMinut45 = Math.floor(Math.random() * 5) + 15
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut45, "minute").unix() * 1000
