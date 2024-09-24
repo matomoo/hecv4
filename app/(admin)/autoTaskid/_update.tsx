@@ -37,85 +37,61 @@ const UpdateTaskId = (
   if (taskId === undefined && Number.isNaN(minuteDiff) && (noSep === undefined || noSep === null))
     return <Tag color="default">Task Id No Need</Tag>
 
-  // console.log(taskId)
-  // console.log(waktu)
+  // waiting confirm running tid:1
+  // if (taskId === undefined && (noSep !== undefined || noSep !== null)) {
+  //   console.log('taskid undefined > send taskId 1 and noBooking ' + noBooking)
+  //   const waktuForTid23 = dayjs().unix() * 1000
+  //   const res23 = sendTaskid(noBooking, 1, waktuForTid23)
+  //   res23.then(a => console.log(a))
+  // }
 
-  if (taskId === undefined && (noSep !== undefined || noSep !== null)) {
-    console.log('taskid undefined > send taskId 1 and noBooking ' + noBooking)
+  // waiting confirm running tid:2
+  // if (taskId === 1 && minuteDiff > 1) {
 
-    const waktuForTid23 = dayjs().unix() * 1000
-    const res23 = sendTaskid(noBooking, 1, waktuForTid23)
-    res23.then(a => console.log(a))
+  //   console.log('send taskId 123 and noBooking ' + noBooking)
 
-  }
+  //   const addMinut23 = Math.floor(Math.random() * 5) + 5
+  //   const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
+  //   const res23 = sendTaskid(noBooking, 2, waktuForTid23)
 
+  //   const addMinut34 = Math.floor(Math.random() * 3) + 3
+  //   const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
+  //   const res = sendTaskid(noBooking, 3, waktuForTid4)
+  //   console.log(res.then(a => {
+  //     if (a === 'Task=1 ada. TaskId=2 belum ada') {
+  //       console.log('send taskId 2 and noBooking ' + noBooking)
+  //       const addMinut23 = Math.floor(Math.random() * 5) + 15
+  //       const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut23, "minute").unix() * 1000
+  //       const res23 = sendTaskid(noBooking, 2, waktuForTid23)
+  //       console.log(res23.then(a => console.log(a)))
 
-  if (taskId === 1 && minuteDiff > 1) {
+  //       const addMinut34 = Math.floor(Math.random() * 5) + 3
+  //       const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
+  //       const res = sendTaskid(noBooking, 3, waktuForTid4)
+  //     }
+  //     return console.log(a);
+  //   }))
+  // }
 
-    console.log('send taskId 123 and noBooking ' + noBooking)
+  // waiting confirm running tid:3
+  // if (taskId === 2 && minuteDiff > 1) {
+  //   console.log('send taskId 23 and noBooking ' + noBooking)
 
-    const addMinut23 = Math.floor(Math.random() * 5) + 5
-    const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
-    const res23 = sendTaskid(noBooking, 2, waktuForTid23)
+  //   const addMinut34 = Math.floor(Math.random() * 5) + 3
+  //   const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
+  //   const res = sendTaskid(noBooking, 3, waktuForTid4)
+  //   res.then(a => console.log(a))
+  // }
 
-    const addMinut34 = Math.floor(Math.random() * 3) + 3
-    const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
-    const res = sendTaskid(noBooking, 3, waktuForTid4)
-    console.log(res.then(a => {
-      if (a === 'Task=1 ada. TaskId=2 belum ada') {
-        console.log('send taskId 2 and noBooking ' + noBooking)
-        const addMinut23 = Math.floor(Math.random() * 5) + 15
-        const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut23, "minute").unix() * 1000
-        const res23 = sendTaskid(noBooking, 2, waktuForTid23)
-        console.log(res23.then(a => console.log(a)))
-
-        const addMinut34 = Math.floor(Math.random() * 5) + 3
-        const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
-        const res = sendTaskid(noBooking, 3, waktuForTid4)
-      }
-      return console.log(a);
-    }))
-  }
-
-  if (taskId === 2 && minuteDiff > 1) {
-    console.log('send taskId 23 and noBooking ' + noBooking)
-
-    const addMinut23 = Math.floor(Math.random() * 5) + 5
-    const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
-    const res23 = sendTaskid(noBooking, 2, waktuForTid23)
-    res23.then(a => console.log(a))
-
-    const addMinut34 = Math.floor(Math.random() * 5) + 3
-    const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
-    const res = sendTaskid(noBooking, 3, waktuForTid4)
-    res.then(a => console.log(a))
-  }
-
+  // only running tid:4
   if (taskId === 3 && minuteDiff > 5) {
     console.log('send taskId 4 and minuteDiff > 15 and noBooking ' + noBooking)
     const addMinut34 = Math.floor(Math.random() * 5) + 10
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
     const res = sendTaskid(noBooking, 4, waktuForTid4)
-    console.log(res.then(a => {
-      if (a === 'TaskId=4 tidak valid / TaskId sebelumnya belum terkirim' || a === 'TaskId=3 belum ada' || a === 'Task=1 ada. TaskId=2 belum ada') {
+    res.then(a => {
+      if (a === 'TaskId=4 tidak valid / TaskId sebelumnya belum terkirim' || a === 'TaskId=3 belum ada') {
         console.log('send taskId 123 and noBooking ' + noBooking)
-
-        const addMinut12 = Math.floor(Math.random() * 5) + 10
-        const waktuForTid12 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut12, "minute").unix() * 1000
-        const res12 = sendTaskid(noBooking, 1, waktuForTid12)
-
-        const addMinut23 = Math.floor(Math.random() * 5) + 5
-        const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
-        const res23 = sendTaskid(noBooking, 2, waktuForTid23)
-        res23.then(a => {
-          console.log('send taskId 2 and noBooking ' + noBooking)
-          if (a === 'Task=1 ada. TaskId=2 belum ada') {
-            const addMinut23 = Math.floor(Math.random() * 1) + 1
-            console.log(addMinut23)
-            const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
-            const res23 = sendTaskid(noBooking, 2, waktuForTid23)
-          }
-        })
 
         const addMinut34 = Math.floor(Math.random() * 3) + 3
         const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
@@ -123,7 +99,7 @@ const UpdateTaskId = (
         console.log(res.then(a => console.log(a)))
       }
       return console.log(a);
-    }))
+    })
   }
 
   if (taskId === 4 && minuteDiff > 5) {
