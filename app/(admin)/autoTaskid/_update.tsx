@@ -22,11 +22,16 @@ const sendTaskid = async (noBooking: string, taskId: number, waktu: number) => {
 }
 
 const UpdateTaskId = (
-  { taskId, waktu, minuteDiff, noBooking, noSep }
-    : { taskId: any, waktu: string, minuteDiff: number, noBooking: string, noSep: string }) => {
+  { taskId, waktu, minuteDiff, noBooking, noSep, jamReg }
+    : { taskId: any, waktu: string, minuteDiff: number, noBooking: string, noSep: string, jamReg: string }) => {
 
-  // if (noBooking !== '20240923000019')
+  // if (noBooking !== '20240926000050')
   //   return <div>no proses</div>
+
+  console.log(taskId)
+  console.log(minuteDiff)
+  console.log(noSep)
+  console.log(jamReg)
 
   if (noSep === undefined || noSep === null)
     return <Tag color="default">No SEP</Tag>
@@ -38,12 +43,13 @@ const UpdateTaskId = (
     return <Tag color="default">Task Id No Need</Tag>
 
   // waiting confirm running tid:1
-  // if (taskId === undefined && (noSep !== undefined || noSep !== null)) {
-  //   console.log('taskid undefined > send taskId 1 and noBooking ' + noBooking)
-  //   const waktuForTid23 = dayjs().unix() * 1000
-  //   const res23 = sendTaskid(noBooking, 1, waktuForTid23)
-  //   res23.then(a => console.log(a))
-  // }
+  if (taskId === undefined && (noSep !== undefined || noSep !== null)) {
+    console.log('taskid undefined > send taskId 1 and noBooking ' + noBooking)
+    const waktuReg = dayjs().format('DD-MM-YYYY') + ' ' + jamReg
+    const waktuForTid23 = dayjs(waktuReg, "DD-MM-YYYY HH:mm:ss", true).unix() * 1000
+    const res23 = sendTaskid(noBooking, 1, waktuForTid23)
+    res23.then(a => console.log(a))
+  }
 
   // waiting confirm running tid:2
   if (taskId === 1 && minuteDiff > 1) {
@@ -90,10 +96,12 @@ const UpdateTaskId = (
         const addMinut12 = Math.floor(Math.random() * 9) + 1
         const waktuForTid12 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut12, "minute").unix() * 1000
         const res12 = sendTaskid(noBooking, 1, waktuForTid12)
+        res12.then(a => console.log(a))
 
-        const addMinut23 = Math.floor(Math.random() * 5) + 1
-        const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "minute").unix() * 1000
+        const addMinut23 = Math.floor(Math.random() * 15)
+        const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut23, "second").unix() * 1000
         const res23 = sendTaskid(noBooking, 2, waktuForTid23)
+        res23.then(a => console.log(a))
 
         const addMinut34 = Math.floor(Math.random() * 3) + 3
         const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000

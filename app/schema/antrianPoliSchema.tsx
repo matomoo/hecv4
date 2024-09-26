@@ -20,6 +20,8 @@ export interface Schema_GetAllRegistrasiPeriksaForTaskid {
   nm_pasien: string;
   nobooking: string;
   no_sep: string;
+  tgl_registrasi: string;
+  jam_reg: string;
 }
 
 export interface SchemaAntrianVisus {

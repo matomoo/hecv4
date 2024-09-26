@@ -17,7 +17,7 @@ dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Asia/Makassar");
 //#endregion
 
-const CardDetail = ({ kodeBooking, noSep }: { kodeBooking: string, noSep: string }) => {
+const CardDetail = ({ kodeBooking, noSep, jamReg }: { kodeBooking: string, noSep: string, jamReg: string }) => {
   const { data: dataTaskid, isError, error, isLoading } = useMjknGetTaskid(kodeBooking);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
@@ -35,7 +35,7 @@ const CardDetail = ({ kodeBooking, noSep }: { kodeBooking: string, noSep: string
         <div>Minute diff : {minuteDiff}</div>
         <div>Last Task Id : {lastTid}</div>
         <div>No Sep: {noSep}</div> */}
-        <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} noSep={noSep} />
+        <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} noSep={noSep} jamReg={jamReg} />
 
         {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
           return (
