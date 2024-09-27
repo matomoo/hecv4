@@ -7,6 +7,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import UpdateTaskId from './_update';
+import UpdateTid67 from './_updateTid67';
 // var customParseFormat = require("dayjs/plugin/customParseFormat");
 
 //#region - dayjs setting
@@ -17,7 +18,7 @@ dayjs.extend(customParseFormat);
 dayjs.tz.setDefault("Asia/Makassar");
 //#endregion
 
-const CardDetail = ({ kodeBooking, noSep, jamReg }: { kodeBooking: string, noSep: string, jamReg: string }) => {
+const CardDetail = ({ kodeBooking, noSep, jamReg, noRawat }: { kodeBooking: string, noSep: string, jamReg: string, noRawat: string }) => {
   const { data: dataTaskid, isError, error, isLoading } = useMjknGetTaskid(kodeBooking);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
@@ -36,6 +37,7 @@ const CardDetail = ({ kodeBooking, noSep, jamReg }: { kodeBooking: string, noSep
         <div>Last Task Id : {lastTid}</div>
         <div>No Sep: {noSep}</div> */}
         <UpdateTaskId taskId={lastTid!} waktu={timeTid} minuteDiff={minuteDiff} noBooking={kodeBooking} noSep={noSep} jamReg={jamReg} />
+        <UpdateTid67 noRawat={noRawat} waktu={timeTid} minuteDiff={minuteDiff} taskId={lastTid!} noBooking={kodeBooking} />
 
         {dataTaskid?.map((elm: Schema_GetTaskId, idx: number) => {
           return (

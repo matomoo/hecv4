@@ -4,6 +4,7 @@ import { Schema_GetAllRegistrasiPeriksaForTaskid } from '@/app/schema/antrianPol
 import React from 'react'
 import CardDetail from './_card';
 import { Space, Tag } from 'antd';
+import UpdateTid67 from './_updateTid67';
 
 const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[] }) => {
 
@@ -17,7 +18,7 @@ const CardsTaskId = ({ data }: { data: Schema_GetAllRegistrasiPeriksaForTaskid[]
             <Tag>{elm.no_sep}</Tag>
             <Tag>{elm.nobooking}</Tag>
           </Space>
-          <CardDetail kodeBooking={elm.nobooking ?? elm.no_rawat} noSep={elm.no_sep} jamReg={elm.jam_reg} />
+          <CardDetail kodeBooking={elm.nobooking ?? elm.no_rawat} noSep={elm.no_sep} jamReg={elm.jam_reg} noRawat={elm.no_rawat} />
         </div>
       )
     })}</div>

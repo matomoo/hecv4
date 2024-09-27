@@ -24,6 +24,11 @@ export interface Schema_GetAllRegistrasiPeriksaForTaskid {
   jam_reg: string;
 }
 
+export interface Schema_getByNoRawatForTaskid_ResepObat {
+  no_rawat: string;
+  no_resep: string;
+}
+
 export interface SchemaAntrianVisus {
   no_rawat: string;
   no_rkm_medis: string;

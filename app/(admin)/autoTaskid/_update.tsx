@@ -28,10 +28,10 @@ const UpdateTaskId = (
   // if (noBooking !== '20240926000050')
   //   return <div>no proses</div>
 
-  console.log(taskId)
-  console.log(minuteDiff)
-  console.log(noSep)
-  console.log(jamReg)
+  // console.log(taskId)
+  // console.log(minuteDiff)
+  // console.log(noSep)
+  // console.log(jamReg)
 
   if (noSep === undefined || noSep === null)
     return <Tag color="default">No SEP</Tag>
