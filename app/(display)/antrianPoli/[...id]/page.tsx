@@ -9,7 +9,7 @@ const AdminAntrianPoli = ({ params }: { params: { id: string } }) => {
   setInterval(() => {
     console.log('reload')
     window.location.reload();
-  }, 10 * 60 * 1000);
+  }, 60 * 1000);
 
 
   return (
