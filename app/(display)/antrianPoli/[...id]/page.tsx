@@ -6,7 +6,6 @@ import ListAntrianPoli from './_listAntrianPoli';
 const AdminAntrianPoli = ({ params }: { params: { id: string } }) => {
 
   setInterval(() => {
-    console.log('reload')
     window.location.reload();
   }, 60 * 1000);
 

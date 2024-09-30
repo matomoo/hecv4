@@ -9,11 +9,7 @@ const autoTaskidPage = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  // console.log(dataTaskid)
-
-  // reload every 10 minute
   setInterval(() => {
-    console.log('reload')
     window.location.reload();
   }, 10 * 60 * 1000);
 

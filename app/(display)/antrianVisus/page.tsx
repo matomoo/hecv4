@@ -4,9 +4,7 @@ import ListAntrianVisus from './_listAntrianVisus';
 
 const AdminAntrianVisus = ({ params }: { params: { id: string } }) => {
 
-  // reload every 10 minute
   setInterval(() => {
-    console.log('reload')
     window.location.reload();
   }, 10 * 60 * 1000);
 
