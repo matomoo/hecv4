@@ -12,7 +12,10 @@ const useAntrianPoli = () => {
     },
     staleTime: 10 * 1000, //10s
     refetchInterval: 10 * 1000, //10s
-    refetchIntervalInBackground: true
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchIntervalInBackground: true,
   });
 };
 
