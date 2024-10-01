@@ -11,7 +11,11 @@ const useAntrianPeriksaPoli = (namaPoli: string) => {
       return response.data.response.data[0][0];
     },
     staleTime: 10 * 1000, //10s
-    // refetchInterval: 10 * 1000, //10s
+    refetchInterval: 10 * 1000, //10s
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchIntervalInBackground: true,
     // refetchIntervalInBackground: true
   });
 };
