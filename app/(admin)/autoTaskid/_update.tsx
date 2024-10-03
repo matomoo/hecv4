@@ -67,6 +67,13 @@ const UpdateTaskId = (
         const waktuForTid12 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).subtract(addMinut12, "minute").unix() * 1000
         const res12 = sendTaskid(noBooking, 1, waktuForTid12)
       }
+      if (a.includes('Waktu TaskId=1')) {
+        console.log('send taskId 1 in 2 and noBooking ' + noBooking)
+
+        const addMinut23 = Math.floor(Math.random() * 5) + 10
+        const waktuForTid23 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut23, "minute").unix() * 1000
+        const res23 = sendTaskid(noBooking, 2, waktuForTid23)
+      }
       return console.log(a);
     })
 
