@@ -4,9 +4,9 @@ import ListAntrianVisus from './_listAntrianVisus';
 
 const AdminAntrianVisus = ({ params }: { params: { id: string } }) => {
 
-  setInterval(() => {
-    window.location.reload();
-  }, 10 * 60 * 1000);
+  // setInterval(() => {
+  //   window.location.reload();
+  // }, 10 * 60 * 1000);
 
 
   return (
