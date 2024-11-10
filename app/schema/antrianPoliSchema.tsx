@@ -14,6 +14,28 @@ export interface Schema_GetTaskId {
 
 }
 
+export interface Schema_GetAllPetugas {
+  nip: string
+  nama: string
+  nm_jbtn: string
+}
+
+export interface Schema_GetAppUser {
+  clerkUserId: string
+  createdAt: string
+  email: string
+  isActive: string
+  isAdmin: string
+  kd_jbtn: string
+  nama: string
+  nip: string
+  nm_jbtn: string
+  profilePic: string
+  updatedAt: string
+  username: string
+  id: string
+}
+
 export interface Schema_GetAllRegistrasiPeriksaForTaskid {
   no_rawat: string;
   no_rkm_medis: string;

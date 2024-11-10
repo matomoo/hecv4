@@ -1,11 +1,13 @@
 import { apiUrl } from '@/constants';
-import { petugas } from '@prisma/client';
+import { jabatan, petugas } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
+import { Schema_GetAllPetugas } from '../schema/antrianPoliSchema';
 
+type petugasList = petugas & { jabatan: jabatan }
 
 const usePetugas = () => {
-  return useQuery<petugas[], Error>({
+  return useQuery<Schema_GetAllPetugas[], Error>({
     queryKey: ["petugas"],
     queryFn: async () => {
       const response = await axios.get(apiUrl + "getAll_Petugas");

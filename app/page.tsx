@@ -1,12 +1,42 @@
+"use client";
 import { Card, Space, Divider, Button, Flex } from 'antd';
-import AppUserWelcomeCard from './(admin)/appUser/page';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import AppUserWelcomeCard from './(admin)/appUser/_card';
 
 
-export default async function Home() {
+export default function Home() {
+
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  const router = useRouter();
+
+  if (!user) {
+    router.push(`/sign-in`);
+  }
+
+  useEffect(() => {
+
+    const role = user?.publicMetadata.role;
+    // console.log(user?.id);
+
+    if (role) {
+      router.push(`/${role}`);
+    } else {
+      router.push(`/konek-akun`);
+    }
+  }, [user, router]);
+
   return (
     <Space direction='vertical'>
-      {/* <AppUserWelcomeCard /> */}
-      <Space direction="vertical" size="middle">
+      {!user ? <div>Loading...</div> :
+        <div>
+          Home
+          <AppUserWelcomeCard clerkId={user?.id} />
+        </div>
+      }
+      {/* <Space direction="vertical" size="middle">
         <Card title="Laporan Operasi" size="small"
         >
           <Space size="middle" >
@@ -85,7 +115,7 @@ export default async function Home() {
             </Button>
           </Space>
         </Card>
-      </Space>
+      </Space> */}
     </Space>
   );
 }

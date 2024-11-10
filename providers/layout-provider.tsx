@@ -29,9 +29,16 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
               router.push("/");
             }}
           >
-            SIM HEC V2
+            SIM HEC V4
           </h1>
+          <h3
+            className="text-lg text-white font-bold cursor-pointer"
+            onClick={() => {
+              router.push("/konek-akun");
+            }}
+          >Konek Akun</h3>
           <div className="bg-white py-2 px-5 rounded-sm flex items-center gap-5">
+
             <UserButton signInUrl="/sign-in" />
           </div>
         </div>

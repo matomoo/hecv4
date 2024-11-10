@@ -2,9 +2,11 @@
 
 import { Card, Space } from "antd";
 import useAppUser from "../../hooks/useAppUser";
-// import BtnConnectAkun from "./_btnConnectAkun";
-import { AppUser } from "@prisma/client";
+import { AppUser, jabatan, petugas } from "@prisma/client";
 import BtnConnectAkun from "./_btnConnectAkun";
+import { Schema_GetAppUser } from "@/app/schema/antrianPoliSchema";
+
+type userList = Schema_GetAppUser
 
 const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
 
@@ -12,10 +14,11 @@ const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
+  // console.log(appUser)
   return (
     <Card>
       <Space direction="vertical" >
-        <BtnConnectAkun user={appUser as AppUser} />
+        <BtnConnectAkun user={appUser as userList} />
       </Space>
     </Card>
   );

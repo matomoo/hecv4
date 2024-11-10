@@ -1,14 +1,22 @@
 "use client"
 import usePetugas from "@/app/hooks/usePetugas";
-import { AppUser, petugas } from "@prisma/client";
+import { Schema_GetAllPetugas, Schema_GetAppUser } from "@/app/schema/antrianPoliSchema";
+import { AppUser, jabatan, petugas } from "@prisma/client";
 import { Button, Flex, Form, Input, Select } from "antd";
 
 const { Option } = Select;
 
+type petugasList = petugas & { jabatan: jabatan }
+
 const ConnectAkunForm = (
-  { user, handlerSubmit }: { user: AppUser, handlerSubmit: (values: any) => void }
+  {
+    user, handlerSubmit
+  }: {
+    user: Schema_GetAppUser, handlerSubmit: (values: any) => void
+  }
 ) => {
 
+  const [form] = Form.useForm();
   const { data: dataPetugas, isError, isLoading } = usePetugas();
 
   if (isLoading) return <p>Loading...</p>;
@@ -24,9 +32,17 @@ const ConnectAkunForm = (
     formData = user
   }
 
+  const handleChange = (value: string) => {
+    const filter1 = dataPetugas?.filter((elm1) => elm1.nip === value)
+    // console.log(filter1![0].nm_jbtn)
+    form.setFieldValue('nm_jbtn', filter1![0].nm_jbtn)
+    // console.log(`selected ${value}`);
+  };
+
   return (
     <>
       <Form variant="filled"
+        form={form}
         layout="horizontal"
         initialValues={formData}
         labelAlign="left"
@@ -34,22 +50,27 @@ const ConnectAkunForm = (
         onFinish={handlerSubmit}
       >
         <Flex vertical gap={8}>
+          <div>Pilih user</div>
           <Form.Item label="Id" name="clerkId" className="hidden">
             <Input disabled />
           </Form.Item>
           <Form.Item name="nip">
-            <Select
-              style={{ width: 200 }}
+            <Select onChange={handleChange}
+              style={{ width: 400 }}
             >
-              {dataPetugas?.map((elm1: petugas) => {
+              {dataPetugas?.map((elm1: Schema_GetAllPetugas) => {
                 return <Option key={elm1.nip} value={elm1.nip}>{elm1.nama}</Option>
               })}
             </Select>
           </Form.Item>
-          <Form.Item label="Password" name="password" >
-            <Input />
-          </Form.Item>
 
+          <Form.Item name="nm_jbtn" className="">
+            <Input disabled />
+          </Form.Item>
+          {/* <div>Password</div>
+          <Form.Item name="password" >
+            <Input />
+          </Form.Item> */}
 
           {/* TODO : add loading indicator icon */}
           <Button type="primary" htmlType="submit">
