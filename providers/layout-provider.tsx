@@ -5,6 +5,7 @@ import React from "react";
 import type { MenuProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
 import Image from "next/image";
+import Link from "next/link";
 
 const { Header, Content, Sider } = Layout;
 
@@ -21,7 +22,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus'].includes(pathname.split("/")[1]);
 
-  const role = user?.publicMetadata.role;
+  const userRole = user?.publicMetadata.role;
   const urlBase = `/${user?.publicMetadata.role}`
 
   const verticalMenu = [
@@ -37,22 +38,26 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
 
   const items2: MenuProps['items'] = [
     {
-      key: '2',
+      key: 'home',
       label: <a href={`${urlBase}`} target="_self" rel="noopener noreferrer">Home</a>,
     },
-    {
-      key: '3',
-      label: <div>Asisten Apoteker</div>,
-      children: [
+    ...(userRole === 'asisten-apoteker'
+      ? [
         {
-          key: '3a',
-          label: <a href={`${urlBase}/penjualan`} target="_self" rel="noopener noreferrer">Penjualan Obat</a>,
+          key: 'asisten-apoteker-dashboard',
+          label: <div>Dashboard</div>,
+          children: [
+            {
+              key: '3a',
+              label: <Link href={`${urlBase}/penjualan`}>Penjualan Obat</Link>,
 
+            },
+          ],
         },
-      ],
-    },
+      ]
+      : []),
     {
-      key: '4',
+      key: 'page-konek-akun',
       label: <a href={`${urlBase}/konek-akun`} target="_self" rel="noopener noreferrer">Konek Akun</a>,
     },
   ]
@@ -67,7 +72,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
+            defaultSelectedKeys={['asisten-apoteker-dashboard']}
             items={verticalMenu}
             style={{ display: 'flex', minWidth: 0, marginLeft: 'auto' }}
           />

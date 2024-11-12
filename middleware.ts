@@ -18,6 +18,8 @@ export default clerkMiddleware((auth, req) => {
     if (matcher(req) && !allowedRoles.includes(role!)) {
       return NextResponse.redirect(new URL(`/${role}`, req.url));
     }
+
+    return NextResponse.next();
   }
 });
 
