@@ -1,14 +1,7 @@
-"use client";
-import Loader from '@/app/components/loader';
-import { useUser } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server'
 
-const page = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
-
-  if (!isLoaded) {
-    return <Loader />;
-  }
-
+const page = async () => {
+  const user = await currentUser()
   const role: any = user?.publicMetadata.role;
 
   return (

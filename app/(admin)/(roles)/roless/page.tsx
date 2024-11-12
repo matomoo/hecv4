@@ -1,16 +1,8 @@
-"use client";
-import Loader from '@/app/components/loader';
-import { useUser } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server'
 
 
-export default function Home() {
-
-  const { isLoaded, isSignedIn, user } = useUser();
-
-  if (!isLoaded) {
-    return <Loader />;
-  }
-
+const page = async () => {
+  const user = await currentUser()
   const role: any = user?.publicMetadata.role;
 
   return (
@@ -21,3 +13,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default page;
