@@ -6,6 +6,7 @@ type RouteAccessMap = {
 
 export const routeAccessMap: RouteAccessMap = {
   "/konek-akun(.*)": ["-", "asisten-apoteker", "it"],
+  "/undefined(.*)": ["-", "asisten-apoteker", "it"],
   "/admin(.*)": ["admin"],
   "/student(.*)": ["student"],
   "/teacher(.*)": ["teacher"],

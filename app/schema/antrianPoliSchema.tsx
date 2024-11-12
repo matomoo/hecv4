@@ -14,6 +14,56 @@ export interface Schema_GetTaskId {
 
 }
 
+export interface Schema_GetDetailPenjualanObat {
+  nota_jual: string
+  tgl_jual: string
+  nip: string
+  no_rkm_medis: string
+  nm_pasien: string
+  keterangan: string
+  jns_jual: string
+  ongkir: string
+  ppn: string
+  status: string
+  kd_bangsal: string
+  kd_rek: string
+  nama_bayar: string
+  kode_brng: string
+  kode_sat: string
+  h_jual: string
+  h_beli: string
+  jumlah: string
+  subtotal: string
+  dis: string
+  bsr_dis: string
+  tambahan: string
+  embalase: string
+  tuslah: string
+  aturan_pakai: string
+  total: string
+  no_batch: string
+  no_faktur: string
+  nama_brng: string
+  alamat: string
+  nama: string
+}
+
+export interface Schema_GetPenjualanObat {
+  nota_jual: string
+  tgl_jual: string
+  nip: string
+  no_rkm_medis: string
+  nm_pasien: string
+  keterangan: string
+  jns_jual: string
+  ongkir: string
+  ppn: string
+  status: string
+  kd_bangsal: string
+  kd_rek: string
+  nama_bayar: string
+}
+
 export interface Schema_GetAllPetugas {
   nip: string
   nama: string

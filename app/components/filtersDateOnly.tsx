@@ -45,17 +45,9 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
     }
 
     const queryString = new URLSearchParams(formattedData).toString();
-    // console.log(queryString)
     router.push(`${pathname}?${queryString}`);
-
-    // console.log(searchParams)
-
-    // console.log(searchParams)
     setShowFiltersModal(false);
   };
-
-  // console.log(Object.keys(searchParams.tgl_registrasi).length)
-
 
   return (
     <>
@@ -66,15 +58,10 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
           ) : (
             <div className="flex flex-wrap gap-5">
               {Object.keys(searchParams).map((key) => {
-                // console.log('searchParams on tag')
-                // console.log(searchParams[key])
-                // if (key === 'tgl_registrasi') {
-                //   searchParams['tgl_registrasi'] = dayjs(searchParams[key]).format('YYYY-MM-DD');
-                // }
 
                 return (
                   <div className="capitalize flex flex-col gap-1" key={key}>
-                    <span className="text-gray-500 text-sm">{key}</span>
+                    <span className="text-gray-500 text-sm">{key === 'tgl_registrasi' ? 'Tanggal' : key}</span>
                     <Tag
                       onClose={() => {
 
@@ -93,9 +80,7 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
                       closeIcon
                       className="flex items-center gap-1 border border-solid border-primary"
                     >
-                      <div className="span text-primary text-sm ">
-                        {key === 'tgl_registrasi' ? dayjs(searchParams[key]).format("YYYY-MM-DD") : searchParams[key]}
-                      </div>
+                      {key === 'tgl_registrasi' ? dayjs(searchParams[key]).format("YYYY-MM-DD") : searchParams[key]} {' '}
                     </Tag>
                   </div>
                 );
@@ -122,9 +107,6 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
           <Button
             type="primary"
             onClick={() => {
-              // if (Object.keys(searchParams).length === 0 || searchParams.tgl_registrasi === undefined) {
-              //   searchParams.tgl_registrasi = todayDate
-              // }
               searchParams.tgl_registrasi = ''
               setShowFiltersModal(true);
             }}
@@ -160,17 +142,10 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
             initialValues={searchParams}
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-              {/* <Form.Item label="Nomor Rekam Medis" name="no_rkm_medis">
-                <Input />
-              </Form.Item>
-              <Form.Item label="Nomor Rawat" name="no_rawat">
-                <Input />
-              </Form.Item> */}
               <Form.Item className="" label="Tanggal Registrasi" name="tgl_registrasi">
                 <DatePicker className="w-full" format={'DD-MM-YYYY'}
                 />
               </Form.Item>
-
             </div>
 
             <div className="mt-7 flex justify-end gap-5">

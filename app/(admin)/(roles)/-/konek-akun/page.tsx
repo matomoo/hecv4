@@ -3,7 +3,7 @@ import { Card, Space, Divider, Button, Flex } from 'antd';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import AppUserWelcomeCard from '../../appUser/_card';
+import AppUserWelcomeCard from '@/app/(admin)/appUser/_card';
 
 
 export default function Home() {

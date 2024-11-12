@@ -8,34 +8,34 @@ import AppUserWelcomeCard from './(admin)/appUser/_card';
 
 export default function Home() {
 
-  const { isLoaded, isSignedIn, user } = useUser();
+  // const { isLoaded, isSignedIn, user } = useUser();
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  if (!user) {
-    router.push(`/sign-in`);
-  }
+  // if (!user) {
+  //   router.push(`/sign-in`);
+  // }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const role = user?.publicMetadata.role;
-    // console.log(user?.id);
+  //   const role = user?.publicMetadata.role;
+  //   // console.log(user?.id);
 
-    if (role) {
-      router.push(`/${role}`);
-    } else {
-      router.push(`/konek-akun`);
-    }
-  }, [user, router]);
+  //   if (role) {
+  //     router.push(`/${role}`);
+  //   } else {
+  //     router.push(`/konek-akun`);
+  //   }
+  // }, [user, router]);
 
   return (
     <Space direction='vertical'>
-      {!user ? <div>Loading...</div> :
-        <div>
-          Home
-          <AppUserWelcomeCard clerkId={user?.id} />
-        </div>
-      }
+      {/* {!user ? <div>Loading...</div> : */}
+      <div>
+        Home
+        {/* <AppUserWelcomeCard clerkId={user?.id} /> */}
+      </div>
+      {/* } */}
       {/* <Space direction="vertical" size="middle">
         <Card title="Laporan Operasi" size="small"
         >
