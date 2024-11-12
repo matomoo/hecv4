@@ -4,7 +4,7 @@ import { Schema_GetPenjualanObat } from '../schema/antrianPoliSchema';
 import { apiUrl } from '@/constants';
 
 
-const use_getPenjualanObat = (tanggal1: string, tanggal2: string) => {
+const Use_getPenjualanObat = (tanggal1: string, tanggal2: string) => {
   return useQuery<Schema_GetPenjualanObat[], Error>({
     queryKey: ["daftarPenjualan", tanggal1, tanggal2],
     queryFn: async () => {
@@ -19,4 +19,4 @@ const use_getPenjualanObat = (tanggal1: string, tanggal2: string) => {
   });
 };
 
-export default use_getPenjualanObat;
+export default Use_getPenjualanObat;

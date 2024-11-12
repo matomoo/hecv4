@@ -1,5 +1,4 @@
-import { Schema_GetDetailPenjualanObat, SchemaDataLaporanOperasi } from "@/app/schema/antrianPoliSchema";
-import { getDateDuration } from "@/lib/helpers";
+import { Schema_GetDetailPenjualanObat } from "@/app/schema/antrianPoliSchema";
 import {
   Document,
   Font,
@@ -15,11 +14,6 @@ import dayjs from "dayjs";
 import "dayjs/locale/id";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-import QRCode from 'qrcode';
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-// import { HelveticaBold } from "../../../../../public/fonts/helvetica-bold.ttf";
-
 
 interface IPage {
   resultLaporanOperasi: Schema_GetDetailPenjualanObat[]
@@ -37,8 +31,6 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
   dayjs.tz.setDefault("Asia/Makassar");
   //#endregion
 
-  const [qrImage, setQrImage] = useState<string>('no data');
-  let myuuid = uuidv4();
 
   return (
     <Document>
@@ -113,7 +105,7 @@ export const LaporanOperasiPdf = ({ resultLaporanOperasi }: IPage) => {
             </View>
           </View>
           {resultLaporanOperasi.map((elm1: Schema_GetDetailPenjualanObat, index) =>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row' }} key={index}>
               <View style={[styles.cellBorderLeftTop, { width: '5%' }]}>
                 <Text style={[styles.typoH8, { textAlign: "center" }]}>{index + 1}</Text>
               </View>

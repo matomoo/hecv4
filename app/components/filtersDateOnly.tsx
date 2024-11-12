@@ -21,7 +21,11 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
   const pathname = usePathname();
   const todayDate = dayjs().format('YYYY-MM-DD') // + 'T00:00:00.000Z';
   if (Object.keys(searchParams).length === 0) {
+    const formattedData: any = {};
     searchParams.tgl_registrasi = todayDate
+    const queryString = new URLSearchParams({ 'tgl_registrasi': todayDate }).toString();
+    router.push(`${pathname}?${queryString}`);
+    // router.refresh()
   }
 
   const onFinish = (values: any) => {

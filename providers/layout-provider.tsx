@@ -1,20 +1,9 @@
 "use client";
-import Loader from "@/app/components/loader";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { AppUser } from "@prisma/client";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Button } from 'antd';
-import { useState } from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import React from "react";
 import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 import Image from "next/image";
 
 const { Header, Content, Sider } = Layout;

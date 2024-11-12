@@ -4,7 +4,7 @@ import { Schema_GetDetailPenjualanObat } from '../schema/antrianPoliSchema';
 import { apiUrl } from '@/constants';
 
 
-const use_getDetailPenjualanObat = (nota_jual: string) => {
+const Use_getDetailPenjualanObat = (nota_jual: string) => {
   return useQuery<Schema_GetDetailPenjualanObat[], Error>({
     queryKey: ["detailPenjualan", nota_jual],
     queryFn: async () => {
@@ -19,4 +19,4 @@ const use_getDetailPenjualanObat = (nota_jual: string) => {
   });
 };
 
-export default use_getDetailPenjualanObat;
+export default Use_getDetailPenjualanObat;

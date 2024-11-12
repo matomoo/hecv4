@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import 'remixicon/fonts/remixicon.css';
 import "./globals.css";
 import ReactQueryProviders from "@/providers/query-client-provider";
-import ReactQueryProvider from "@/providers/react-query-provider";
 
 
 export const metadata: Metadata = {

@@ -1,37 +1,19 @@
 "use client";
-import { Card, Space, Divider, Button, Flex } from 'antd';
+import { Space } from 'antd';
 import { useUser } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import AppUserWelcomeCard from '@/app/(admin)/appUser/_card';
+import Loader from '@/app/components/loader';
 
 
 export default function Home() {
 
-  const { isLoaded, isSignedIn, user } = useUser();
-
-  const router = useRouter();
-
-  // if (!user) {
-  //   router.push(`/sign-in`);
-  // }
-
-  // useEffect(() => {
-
-  //   const role = user?.publicMetadata.role;
-  //   console.log(user?.id);
-
-  //   if (role) {
-  //     // router.push(`/${role}`);
-  //     // router.push(`/`);
-  //   }
-  // }, [user, router]);
+  const { user } = useUser();
 
   return (
     <Space direction='vertical'>
-      {!user ? <div>Loading...</div> :
+      {!user ? <Loader /> :
         <div>
-          Konek Akun Page
+          <div className='text-xl'>Konek Akun Page</div>
           <AppUserWelcomeCard clerkId={user?.id} />
         </div>
       }

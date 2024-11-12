@@ -1,17 +1,14 @@
 "use client"
-import useDataLaporanOperasi from "@/app/hooks/useDataLaporanOperasi";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFViewer } from "@react-pdf/renderer";
 import type { TabsProps } from 'antd';
 import { Tabs } from 'antd';
-// import FormUpdateLaporanOperasi from "../../uploadBarcodeOperasi/formUpdateLaporanOperasi";
-// import LaporanOperasiUploadBarcodeForm from "../../uploadBarcodeOperasi/formUploadBarcode";
 import { LaporanOperasiPdf } from "./_pdf";
-import use_getDetailPenjualanObat from "@/app/hooks/use_getDetailPenjualanObat";
+import Use_getDetailPenjualanObat from "@/app/hooks/use_getDetailPenjualanObat";
 
 
 const PDFView = ({ params }: { params: { nomor_nota_jual: string } }) => {
 
-  const { data: detailPenjualan, isError, error, isLoading } = use_getDetailPenjualanObat(
+  const { data: detailPenjualan, isError, error, isLoading } = Use_getDetailPenjualanObat(
     params.nomor_nota_jual
   );
 
