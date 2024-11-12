@@ -2,7 +2,6 @@
 
 import { Card, Space } from "antd";
 import useAppUser from "../../hooks/useAppUser";
-import { AppUser, jabatan, petugas } from "@prisma/client";
 import BtnConnectAkun from "./_btnConnectAkun";
 import { Schema_GetAppUser } from "@/app/schema/antrianPoliSchema";
 

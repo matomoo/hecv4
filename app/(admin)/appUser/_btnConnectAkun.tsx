@@ -1,4 +1,3 @@
-import { AppUser, petugas, jabatan } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Space } from 'antd';
 import axios from 'axios';
@@ -6,13 +5,14 @@ import ConnectAkunForm from './_form';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { apiUrl } from '@/constants';
 import { Schema_GetAppUser } from '@/app/schema/antrianPoliSchema';
-import { auth } from '@clerk/nextjs/server';
+import { useRouter } from 'next/navigation';
 
 type userList = Schema_GetAppUser
 
 const BtnConnectAkun = ({ user }: { user: userList }) => {
 
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const mutation = useMutation({
 
@@ -33,18 +33,6 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
     },
 
     onSuccess: async (savedData, newData) => {
-      // console.log(newData)
-      // await fetch("/api/update-metadata", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     publicMetadata: {
-      //       role: newData.nm_jbtn.replaceAll(" ", "-").toLowerCase(),
-      //     },
-      //   }),
-      // });
       queryClient.setQueryData<userList>(['appUser'], newData);
     },
   })
@@ -67,8 +55,9 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
                 <ConnectAkunForm
                   user={user}
                   handlerSubmit={(values) => {
-                    console.log(values)
                     mutation.mutate({ ...user, nip: values.nip, nm_jbtn: values.nm_jbtn });
+                    router.prefetch(`/${values.nm_jbtn.replaceAll(" ", "-").toLowerCase()}`);
+                    router.refresh();
                   }} />
                 : user?.nip === undefined ? 'Need reconnect'
                   : <Space>
@@ -82,7 +71,9 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
                       size='small'
                       shape="circle" icon={<CloseCircleOutlined />}
                       onClick={() => {
-                        mutation.mutate({ ...user, nip: '-', nm_jbtn: 'roless' })
+                        mutation.mutate({ ...user, nip: '-', nm_jbtn: 'roless' });
+                        router.prefetch(`/roless`);
+                        router.refresh();
                       }} />
                   </Space>
               }

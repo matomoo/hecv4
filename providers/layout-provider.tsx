@@ -11,16 +11,16 @@ const { Header, Content, Sider } = Layout;
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
 
+  const { user } = useUser();
+  const router = useRouter();
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const router = useRouter();
-
   const pathname = usePathname();
   const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus'].includes(pathname.split("/")[1]);
 
-  const { user } = useUser();
   const role = user?.publicMetadata.role;
   const urlBase = `/${user?.publicMetadata.role}`
 
@@ -49,11 +49,11 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
           label: <a href={`${urlBase}/penjualan`} target="_self" rel="noopener noreferrer">Penjualan Obat</a>,
 
         },
-        {
-          key: '3b',
-          label: <a href={`${urlBase}/konek-akun`} target="_self" rel="noopener noreferrer">Konek Akun</a>,
-        },
       ],
+    },
+    {
+      key: '4',
+      label: <a href={`${urlBase}/konek-akun`} target="_self" rel="noopener noreferrer">Konek Akun</a>,
     },
   ]
 

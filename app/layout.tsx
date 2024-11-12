@@ -6,10 +6,11 @@ import type { Metadata } from "next";
 import 'remixicon/fonts/remixicon.css';
 import "./globals.css";
 import ReactQueryProviders from "@/providers/query-client-provider";
+import AuthAppProvider from "@/providers/auth-app-provider";
 
 
 export const metadata: Metadata = {
-  title: "SIM HEC V2",
+  title: "SIM HEC V4",
   description: "Await here",
 };
 
