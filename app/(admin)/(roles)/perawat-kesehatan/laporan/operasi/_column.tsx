@@ -28,20 +28,20 @@ export const columns: any = [
           <Button
             size="middle"
             onClick={() =>
-              window.open('/laporan/operasi/' + record.no_rawat.replaceAll('/', '-'))
+              window.open('/perawat-kesehatan/laporan/operasi/' + record.no_rawat.replaceAll('/', '-'))
             }
           >
             <i className="ri-kanban-view"></i>
           </Button>
 
-          <Button
+          {/* <Button
             size="middle"
             onClick={() =>
-              window.open('/laporan/uploadBaroceOperasi/' + record.no_rawat.replaceAll('/', '-'))
+              window.open('/perawat-kesehatan/laporan/uploadBaroceOperasi/' + record.no_rawat.replaceAll('/', '-'))
             }
           >
             <i className="ri-barcode-line"></i>
-          </Button>
+          </Button> */}
 
         </div>
       );

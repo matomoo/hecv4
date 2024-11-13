@@ -33,6 +33,20 @@ const DynamicMenu = () => {
         },
       ]
       : []),
+    ...(userRole === 'perawat-kesehatan'
+      ? [
+        {
+          key: 'perawat-kesehatan-dashboard',
+          label: <div>Dashboard</div>,
+          children: [
+            {
+              key: 'perawat-kesehatan-dashboard-1',
+              label: <Link href={`/${userRole}/laporan/operasi`}>Laporan Operasi</Link>,
+            },
+          ],
+        },
+      ]
+      : []),
     {
       key: 'page-konek-akun',
       label: <Link href={`/${userRole}/konek-akun`}>Konek Akun</Link>,
