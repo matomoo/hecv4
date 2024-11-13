@@ -7,6 +7,7 @@ import 'remixicon/fonts/remixicon.css';
 import "./globals.css";
 import ReactQueryProviders from "@/providers/query-client-provider";
 import AuthAppProvider from "@/providers/auth-app-provider";
+import { UserRoleProvider } from "./context/UserRoleContext";
 
 
 export const metadata: Metadata = {
@@ -23,15 +24,17 @@ export default function RootLayout({
     <html lang="en" className="antialiased" >
       <body>
         <ClerkProvider afterSignOutUrl='/sign-in'>
-          <AntdRegistry>
-            <ReactQueryProviders >
-              <ThemeProvider>
-                <LayoutProvider>
-                  {children}
-                </LayoutProvider>
-              </ThemeProvider>
-            </ReactQueryProviders>
-          </AntdRegistry>
+          <UserRoleProvider>
+            <AntdRegistry>
+              <ReactQueryProviders >
+                <ThemeProvider>
+                  <LayoutProvider>
+                    {children}
+                  </LayoutProvider>
+                </ThemeProvider>
+              </ReactQueryProviders>
+            </AntdRegistry>
+          </UserRoleProvider>
         </ClerkProvider>
       </body>
     </html>

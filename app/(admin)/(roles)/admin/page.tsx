@@ -1,16 +1,12 @@
-import { currentUser } from '@clerk/nextjs/server'
+import PageCheckUserRole from "@/app/components/page-check-user-role";
 
-
-const page = async () => {
-  const user = await currentUser()
-  const role: any = user?.publicMetadata.role;
+const page = () => {
 
   return (
     <div >
-      <div className='text-xl font-semibold'>Halo, {user?.fullName}</div>
-      <div>Jabatan : {role}</div>
+      <PageCheckUserRole />
     </div>
-  )
+  );
 }
 
-export default page
+export default page;

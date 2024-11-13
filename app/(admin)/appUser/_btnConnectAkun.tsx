@@ -6,6 +6,7 @@ import { CloseCircleOutlined } from '@ant-design/icons';
 import { apiUrl } from '@/constants';
 import { Schema_GetAppUser } from '@/app/schema/antrianPoliSchema';
 import { useRouter } from 'next/navigation';
+import { useUserRole } from '@/app/context/UserRoleContext';
 
 type userList = Schema_GetAppUser
 
@@ -13,12 +14,12 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
 
   const queryClient = useQueryClient();
   const router = useRouter();
+  const { refreshRole } = useUserRole();
 
   const mutation = useMutation({
 
     mutationFn: async (newData: userList) => {
-      console.log(newData)
-      await fetch("/api/update-metadata", {
+      const aa = await fetch("/api/update-metadata", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,6 +30,12 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
           },
         }),
       });
+
+      if (aa.status === 200) {
+        refreshRole();
+        router.refresh();
+      }
+
       return axios.put(apiUrl + "updateNip_AppUser", newData)
     },
 
@@ -36,8 +43,6 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
       queryClient.setQueryData<userList>(['appUser'], newData);
     },
   })
-
-  console.log(user)
 
   return (
     <div>
@@ -56,8 +61,7 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
                   user={user}
                   handlerSubmit={(values) => {
                     mutation.mutate({ ...user, nip: values.nip, nm_jbtn: values.nm_jbtn });
-                    router.prefetch(`/${values.nm_jbtn.replaceAll(" ", "-").toLowerCase()}`);
-                    router.refresh();
+
                   }} />
                 : user?.nip === undefined ? 'Need reconnect'
                   : <Space>
@@ -72,8 +76,6 @@ const BtnConnectAkun = ({ user }: { user: userList }) => {
                       shape="circle" icon={<CloseCircleOutlined />}
                       onClick={() => {
                         mutation.mutate({ ...user, nip: '-', nm_jbtn: 'roless' });
-                        router.prefetch(`/roless`);
-                        router.refresh();
                       }} />
                   </Space>
               }
