@@ -43,6 +43,10 @@ const DynamicMenu = () => {
               key: 'perawat-kesehatan-dashboard-1',
               label: <Link href={`/${userRole}/laporan/operasi`}>Laporan Operasi</Link>,
             },
+            {
+              key: 'perawat-kesehatan-dashboard-2',
+              label: <Link href={`/${userRole}/laporan/operasi/waktu-operasi`}>Waktu Operasi</Link>,
+            },
           ],
         },
       ]

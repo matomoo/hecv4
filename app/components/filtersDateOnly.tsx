@@ -20,6 +20,7 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
   const router = useRouter();
   const pathname = usePathname();
   const todayDate = dayjs().format('YYYY-MM-DD') // + 'T00:00:00.000Z';
+
   if (Object.keys(searchParams).length === 0) {
     const formattedData: any = {};
     searchParams.tgl_registrasi = todayDate
@@ -38,15 +39,6 @@ function FiltersDateOnly({ searchParams }: { searchParams: any }) {
         }
       }
     });
-
-    if (Object.keys(searchParams).length === 0
-      || searchParams.tgl_registrasi === ''
-      || searchParams.tgl_registrasi === undefined
-      || Object.keys(searchParams.tgl_registrasi).length == 0
-      || Object.keys(searchParams.tgl_registrasi).length > 10
-    ) {
-      searchParams.tgl_registrasi = todayDate
-    }
 
     const queryString = new URLSearchParams(formattedData).toString();
     router.push(`${pathname}?${queryString}`);

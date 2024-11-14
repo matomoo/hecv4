@@ -11,9 +11,16 @@ export interface Schema_GetTaskId {
   taskname: string;
   waktu: string;
   wakturs: string;
-
 }
 
+export interface Schema_GetTblWaktuOperasi {
+  no_rawat: string
+  tgl_operasi_masuk: string
+  jam_operasi_masuk: string
+  no_rkm_medis: string
+  nm_pasien: string
+  alamat: string
+}
 export interface Schema_GetDetailPenjualanObat {
   nota_jual: string
   tgl_jual: string
