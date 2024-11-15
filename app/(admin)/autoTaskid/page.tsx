@@ -9,9 +9,9 @@ const autoTaskidPage = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  setInterval(() => {
-    window.location.reload();
-  }, 10 * 60 * 1000);
+  // setInterval(() => {
+  //   window.location.reload();
+  // }, 10 * 60 * 1000);
 
   return (
     <div><CardTaskId data={dataTaskid!} /></div>

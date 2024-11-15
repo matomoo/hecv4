@@ -20,8 +20,8 @@ dayjs.tz.setDefault("Asia/Makassar");
 function FetchDataServer({ searchParams }: { searchParams: any }) {
 
   const { data: daftarOperasi, isError, error, isLoading } = Use_getTblWaktuOperasi(
-    // dayjs(searchParams.tgl_registrasi).format("YYYY-MM-DD"),
-    '2024-11-14'
+    dayjs(searchParams.tgl_registrasi).format("YYYY-MM-DD"),
+    // '2024-11-14'
   );
 
   if (isLoading) return <p>Loading...</p>;

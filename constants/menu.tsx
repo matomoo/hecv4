@@ -51,6 +51,20 @@ const DynamicMenu = () => {
         },
       ]
       : []),
+    ...(userRole === 'it'
+      ? [
+        {
+          key: 'it-dashboard',
+          label: <div>Dashboard</div>,
+          children: [
+            {
+              key: 'it-dashboard-1',
+              label: <Link href={`/${userRole}/user-journey`}>User Journey</Link>,
+            },
+          ],
+        },
+      ]
+      : []),
     {
       key: 'page-konek-akun',
       label: <Link href={`/${userRole}/konek-akun`}>Konek Akun</Link>,

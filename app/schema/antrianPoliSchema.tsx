@@ -103,6 +103,10 @@ export interface Schema_GetAllRegistrasiPeriksaForTaskid {
   jam_reg: string;
 }
 
+export interface Schema_getByNoRawat_TaskId3_MJKN {
+  validasi: string
+}
+
 export interface Schema_getByNoRawatForTaskid_ResepObat {
   no_rawat: string;
   no_resep: string;
