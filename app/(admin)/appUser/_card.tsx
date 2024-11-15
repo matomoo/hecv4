@@ -13,7 +13,7 @@ const AppUserWelcomeCard = ({ clerkId }: { clerkId: string }) => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  // console.log(appUser)
+  console.log(appUser)
   return (
     <Card>
       <Space direction="vertical" >

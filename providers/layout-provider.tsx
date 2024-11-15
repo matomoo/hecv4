@@ -1,15 +1,22 @@
 "use client";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout, Menu, theme } from 'antd';
 import Image from "next/image";
 import DynamicMenu from "@/constants/menu";
+import { GetCurrentUserFromMongoDB } from "@/app/hooks/use_upsertNewUser";
+import { AppUser } from "@prisma/client";
 
 const { Header, Content, Sider } = Layout;
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
 
+
+  const [currentUserData = null, setCurrentUserData] =
+    React.useState<AppUser | null>(null);
+  const [loading = false, setLoading] = React.useState<boolean>(false);
+  const [loginSuccess, setLoginSuccess] = React.useState<boolean>(false)
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -67,6 +74,26 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
+  const getCurrentUser = async () => {
+    try {
+      setLoading(true);
+      const response: any = await GetCurrentUserFromMongoDB();
+      if (response.error) throw new Error(response.error.message);
+      setCurrentUserData(response.data);
+      setLoginSuccess(true)
+    } catch (error: any) {
+      console.log(error)
+      setLoginSuccess(false)
+      // message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCurrentUser();
+
+  }, []);
 
   return (
     <div>

@@ -10,7 +10,9 @@ const useAppUser = (clerkId: string) => {
     queryKey: ["appUser"],
     queryFn: async () => {
       const response = await axios.get(apiUrl + "getById_AppUser/" + clerkId);
+      console.log(response)
       return response.data.response.data[0];
+
     },
     staleTime: 10 * 1000
   });
