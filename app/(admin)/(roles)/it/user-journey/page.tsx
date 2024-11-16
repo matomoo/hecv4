@@ -4,6 +4,10 @@ import { Schema_GetAllRegistrasiPeriksaForTaskid } from '@/app/schema/antrianPol
 import { Space, Tag } from 'antd';
 import React from 'react'
 import Card_Tid3_MJKN from './_card_tid3_mjkn';
+import Card_Tid4_MJKN from './_card_tid4_mjkn';
+import Card_Tid5_MJKN from './_card_tid5_mjkn';
+import Card_Tid6_MJKN from './_card_tid6_mjkn';
+import Card_Tid7_MJKN from './_card_tid7_mjkn';
 
 const page = () => {
   const { data: dataTaskid, isError, error, isLoading } = Use_GetAllRegistrasiPeriksaForTaskid();
@@ -24,6 +28,10 @@ const page = () => {
               <Tag>{elm.nobooking}</Tag>
             </Space>
             <Card_Tid3_MJKN no_rawat={elm.no_rawat} />
+            <Card_Tid4_MJKN no_rawat={elm.no_rawat} />
+            <Card_Tid5_MJKN no_rawat={elm.no_rawat} />
+            <Card_Tid6_MJKN no_rawat={elm.no_rawat} />
+            <Card_Tid7_MJKN no_rawat={elm.no_rawat} />
           </div>
         )
       })}</div>

@@ -1,5 +1,4 @@
 import { apiUrl } from '@/constants';
-import { AppUser } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from "axios";
 import { Schema_GetAppUser } from '../schema/antrianPoliSchema';

@@ -107,6 +107,23 @@ export interface Schema_getByNoRawat_TaskId3_MJKN {
   validasi: string
 }
 
+export interface Schema_getByNoRawat_TaskId4_MJKN {
+  validasi: string
+}
+
+export interface Schema_getByNoRawat_TaskId5_MJKN {
+  validasi: string
+}
+
+export interface Schema_getByNoRawat_TaskId6_MJKN {
+  validasi: string
+}
+
+export interface Schema_getByNoRawat_TaskId7_MJKN {
+  validasi: string
+}
+
+
 export interface Schema_getByNoRawatForTaskid_ResepObat {
   no_rawat: string;
   no_resep: string;
