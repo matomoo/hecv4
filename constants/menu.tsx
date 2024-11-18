@@ -1,6 +1,6 @@
 // components/DynamicMenu.tsx
 import { Menu } from 'antd';
-import { useUser } from '@clerk/nextjs';
+import { SignOutButton, useUser } from '@clerk/nextjs';
 import { UserOutlined, SettingOutlined, HomeOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useUserRole } from '@/app/context/UserRoleContext';
@@ -74,10 +74,16 @@ const DynamicMenu = () => {
       key: 'page-konek-akun',
       label: <Link href={`/${userRole}/konek-akun`}>Konek Akun</Link>,
     },
+    {
+      key: 'page-sign-out',
+      label: <SignOutButton>
+        <Link href={``}>Sign Out</Link>
+      </SignOutButton>,
+    },
   ];
 
   return (
-    <Menu mode="inline" items={SubMenuItems} />
+    <Menu mode="inline" theme='dark' items={SubMenuItems} />
   );
 };
 
