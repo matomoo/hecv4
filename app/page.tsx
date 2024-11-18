@@ -15,6 +15,9 @@ export default function Home() {
   if (!user) {
     return router.push('/sign-in')
   } else {
+    if (role === undefined || role === '-' || role === 'roless') {
+      return router.push(`/${role}/konek-akun`)
+    }
     return router.push(`/${role}`)
   }
 

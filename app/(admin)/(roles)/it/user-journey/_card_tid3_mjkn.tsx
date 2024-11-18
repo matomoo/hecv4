@@ -21,8 +21,6 @@ const Card_Tid3_MJKN = ({ no_rawat }: { no_rawat: string }) => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  console.log(dataTaskid)
-
   return (
     <div>
       <Space direction='vertical'>

@@ -146,6 +146,7 @@ export interface SchemaAntrianPoli {
   no_rawat: string;
   numPeriksaPoli: number;
   alamat: string;
+  kd_pj: string;
 }
 export interface SchemaDaftarOperasi {
   tgl_operasi: string;

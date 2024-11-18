@@ -61,8 +61,13 @@ const DynamicMenu = () => {
               key: 'it-dashboard-1',
               label: <Link href={`/${userRole}/user-journey`}>User Journey</Link>,
             },
+            {
+              key: 'it-dashboard-2',
+              label: <Link href={`/antrianAll2`}>Display All</Link>,
+            },
           ],
         },
+
       ]
       : []),
     {

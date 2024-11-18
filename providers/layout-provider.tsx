@@ -12,18 +12,12 @@ const { Header, Content, Sider } = Layout;
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
 
-
-  const [currentUserData = null, setCurrentUserData] =
-    React.useState<AppUser | null>(null);
-  const [loading = false, setLoading] = React.useState<boolean>(false);
-  const [loginSuccess, setLoginSuccess] = React.useState<boolean>(false)
-
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   const pathname = usePathname();
-  const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus'].includes(pathname.split("/")[1]);
+  const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus', 'antrianAll2'].includes(pathname.split("/")[1]);
 
 
   const verticalMenu = [
@@ -74,26 +68,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
-  const getCurrentUser = async () => {
-    try {
-      setLoading(true);
-      const response: any = await GetCurrentUserFromMongoDB();
-      if (response.error) throw new Error(response.error.message);
-      setCurrentUserData(response.data);
-      setLoginSuccess(true)
-    } catch (error: any) {
-      console.log(error)
-      setLoginSuccess(false)
-      // message.error(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  useEffect(() => {
-    getCurrentUser();
-
-  }, []);
 
   return (
     <div>
