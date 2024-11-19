@@ -15,7 +15,7 @@ const ListAntrianPoli = () => {
 
           {dataAntrianPoli?.map((elm: SchemaAntrianPoli) => {
             return (
-              <div key={elm.no_rawat}>{elm.nm_pasien} - {elm.kd_pj === 'BPJ' ? 'BPJS' : 'UMUM'}</div>
+              <div key={elm.no_rawat}>{elm.nm_pasien} - {elm.kd_pj === 'BPJ' ? 'BPJS' : 'UMUM'} - {elm.kd_pj}</div>
             )
           })}
         </div>
