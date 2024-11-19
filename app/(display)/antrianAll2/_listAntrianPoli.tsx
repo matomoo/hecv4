@@ -1,6 +1,6 @@
 import useAntrianPoli from '@/app/hooks/useAntrianPoli';
 import { SchemaAntrianPoli } from '@/app/schema/antrianPoliSchema';
-import { Flex, List, Typography } from 'antd';
+import { Flex } from 'antd';
 
 const ListAntrianPoli = () => {
   const { data: dataAntrianPoli, isError, error, isLoading } = useAntrianPoli();
@@ -15,7 +15,7 @@ const ListAntrianPoli = () => {
 
           {dataAntrianPoli?.map((elm: SchemaAntrianPoli) => {
             return (
-              <div key={elm.no_rawat}>{elm.nm_pasien} - {elm.kd_pj === 'BPJ' ? 'BPJS' : 'UMUM'} - {elm.kd_pj}</div>
+              <div key={elm.no_rawat}>{elm.nm_pasien} - {elm.kd_pj === 'BPJ' ? 'BPJS' : 'UMUM'}</div>
             )
           })}
         </div>
