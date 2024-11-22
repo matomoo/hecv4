@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export const columns: any = [
   {
-    title: "Tanggal Registrasi",
-    dataIndex: "tgl_registrasi",
+    title: "Tanggal Operasi",
+    dataIndex: "tgl_operasi_masuk",
     render: (tgl_operasi_masuk: Date) => dayjs(tgl_operasi_masuk).format('DD MMM YYYY'),
     responsive: ['md'],
   },
@@ -23,7 +23,9 @@ export const columns: any = [
   {
     title: "Waktu Masuk Operasi",
     dataIndex: "jam_operasi_masuk",
-    sorter: (a: any, b: any) => dayjs(b.tgl_operasi_masuk + " " + b.jam_operasi_masuk).unix() - dayjs(a.tgl_operasi_masuk + " " + a.jam_operasi_masuk).unix(),
+    defaultSortOrder: 'ascend',
+    sortDirections: ['ascend'],
+    sorter: (a: any, b: any) => dayjs(a.tgl_operasi_masuk + " " + a.jam_operasi_masuk).unix() - dayjs(b.tgl_operasi_masuk + " " + b.jam_operasi_masuk).unix(),
   },
 
   {

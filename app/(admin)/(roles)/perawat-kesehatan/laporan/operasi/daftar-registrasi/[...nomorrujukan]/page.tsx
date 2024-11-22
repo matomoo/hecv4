@@ -1,7 +1,8 @@
 "use client"
 import UseVclaimRujukanPeserta from '@/app/hooks/use_vclaim_rujukan_peserta';
 import { Schema_Response_RujukanPeserta } from '@/app/schema/antrianPoliSchema';
-import { Flex } from 'antd';
+import { Button, Flex, Space } from 'antd';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const page = ({ params }: { params: { nomorrujukan: string } }) => {
@@ -9,11 +10,18 @@ const page = ({ params }: { params: { nomorrujukan: string } }) => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
+  const router = useRouter()
+
 
   return (
     <div>
       <div className="flex-col">
-        <div className="text-xl font-semibold">Informasi SEP - Nomor Peserta : {params.nomorrujukan}</div>
+        <Space>
+          <Button type="text" size='large' onClick={() => router.back()}>
+            <i className="ri-arrow-left-line"></i>
+          </Button>
+          <div className="text-xl font-semibold">Informasi SEP - Nomor Peserta : {params.nomorrujukan}</div>
+        </Space>
         {dataRujukanPeserta?.map((elm1: Schema_Response_RujukanPeserta) => (
           <Flex key={elm1.rujukan.peserta.noKartu} vertical gap={4} className='mt-8'>
             {/* <div>Asal Faskes : <span>{elm1.asalFaskes}</span></div> */}
