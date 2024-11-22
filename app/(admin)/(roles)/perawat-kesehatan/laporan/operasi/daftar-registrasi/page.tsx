@@ -1,13 +1,13 @@
 import FiltersDateOnly from "@/app/components/filtersDateOnly";
 import FetchDataServer from "./_server";
 
-function RegistrasiPeriksa({ searchParams }: { searchParams: any }) {
+function Page_DaftarRegistrasi({ searchParams }: { searchParams: any }) {
 
 
   return (
     <div>
       <div className="flex-col">
-        <div className="text-xl font-semibold">Laporan Operasi</div>
+        <div className="text-xl font-semibold">Daftar Registrasi</div>
       </div>
       <FiltersDateOnly searchParams={searchParams} />
       {Object.keys(searchParams).length === 0 ? 'Pilih tanggal' :
@@ -17,4 +17,4 @@ function RegistrasiPeriksa({ searchParams }: { searchParams: any }) {
   );
 }
 
-export default RegistrasiPeriksa;
+export default Page_DaftarRegistrasi;

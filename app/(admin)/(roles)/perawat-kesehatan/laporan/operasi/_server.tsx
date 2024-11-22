@@ -29,6 +29,7 @@ function FetchDataServer({ searchParams }: { searchParams: any }) {
   return (
     <div>
       <Table
+        size="small"
         dataSource={daftarOperasi}
         columns={columns}
         rowKey="no_rawat"

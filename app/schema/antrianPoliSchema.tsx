@@ -1,9 +1,80 @@
 
+export interface Schema_getByDate__reg_periksa {
+  tgl_operasi: string
+  no_rawat: string
+  no_rkm_medis: string
+  nm_pasien: string
+  tgl_operasi_masuk: string
+  jam_operasi_masuk: string
+  no_reg: string
+  tgl_registrasi: string
+  jam_reg: string
+  kd_dokter: string
+  kd_poli: string
+  p_jawab: string
+  almt_pj: string
+  hubunganpj: string
+  biaya_reg: string
+  stts: string
+  stts_daftar: string
+  status_lanjut: string
+  kd_pj: string
+  umurdaftar: string
+  sttsumur: string
+  status_bayar: string
+  status_poli: string
+  no_peserta: string
+  jk: string
+  no_tlp: string
+  no_rujukan: string
+  nm_poli: string
+  png_jawab: string
+  status_operasi: string
+  operasi_no_rawat: string
+  operasi_tgl_operasi: string
+}
+
 export interface SchemaAntrianAdmisi {
   tgl_registrasi: string;
   no_rawat: string;
   no_rkm_medis: string;
   nm_pasien: string;
+}
+
+interface responseRujukanPeserta_rujukan_peserta {
+  cob: {
+    nmAsuransi: string, noAsuransi: string, tglTAT: string, tglTMT: string
+  }
+  hakKelas: { kode: string, keterangan: string }
+  informasi: { dinsos: string, prolanisPRB: string, noSKTM: string, eSEP: string }
+  jenisPeserta: { kode: string, keterangan: string }
+  mr: { noMR: string, noTelepon: string }
+  nama: string
+  nik: string
+  noKartu: string
+  pisa: string
+  provUmum: { kdProvider: string, nmProvider: string }
+  sex: string
+  statusPeserta: { kode: string, keterangan: string }
+  tglCetakKartu: string
+  tglLahir: string
+  tglTAT: string
+  tglTMT: string
+  umur: { umurSekarang: string, umurSaatPelayanan: string }
+}
+export interface Schema_Response_RujukanPeserta {
+  asalFaskes: string
+  rujukan: {
+    diagnosa: { kode: string, nama: string }
+    keluhan: string
+    noKunjungan: string
+    pelayanan: { kode: string, nama: string }
+    peserta: responseRujukanPeserta_rujukan_peserta
+    poliRujukan: { kode: string, nama: string }
+    provPerujuk: { kode: string, nama: string }
+    tglKunjungan: string
+  }
+
 }
 export interface Schema_GetTaskId {
   kodebooking: string;

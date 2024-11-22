@@ -30561,3 +30561,9 @@ model tblx_antrian_poli {
   no_rawat     String? @db.VarChar(17)
   kd_dokter    String? @db.VarChar(20)
 }
+
+model tbl_waktu_operasi {
+  no_rawat          String    @id @db.VarChar(17)
+  tgl_operasi_masuk DateTime? @db.Date
+  jam_operasi_masuk DateTime? @db.Time(0)
+}

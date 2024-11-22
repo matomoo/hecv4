@@ -58,10 +58,12 @@ const FormUpsertWaktuMasukOperasi = ({
     mutationFn: (newData: Schema_GetTblWaktuOperasi) => {
       const dataForm = {
         no_rawat: newData.no_rawat,
-        tgl_operasi_masuk: newData.tgl_operasi_masuk,
-        jam_operasi_masuk: newData.jam_operasi_masuk,
+        tgl_operasi_masuk: dayjs().format("YYYY-MM-DD"),
+        jam_operasi_masuk: dayjs().format("HH:mm:ss"),
       }
+
       return axios.put(apiUrl + "insert__tbl_waktu_operasi", dataForm)
+
     },
 
     onSuccess: (savedData, newData) => {

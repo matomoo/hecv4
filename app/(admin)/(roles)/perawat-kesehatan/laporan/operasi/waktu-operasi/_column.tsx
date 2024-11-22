@@ -1,6 +1,8 @@
 "use client"
 import { Button } from "antd";
 import dayjs from "dayjs";
+import { db } from "@/lib/db";
+import CompDelete from "./_comp_delete";
 
 export const columns: any = [
   {
@@ -22,5 +24,14 @@ export const columns: any = [
   {
     title: "Jam Masuk",
     dataIndex: "jam_operasi_masuk",
+  },
+  {
+    title: "Actions",
+    dataIndex: "actions",
+    render(value: any, record: any) {
+      return (
+        <CompDelete value={record} />
+      );
+    },
   },
 ];

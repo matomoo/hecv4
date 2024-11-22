@@ -1,11 +1,13 @@
 'use client'
 
+import useDaftarOperasi from "@/app/hooks/useDaftarOperasi";
 import { Table } from "antd";
 import dayjs from "dayjs";
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { columns } from "./_column";
-import Use_getTblWaktuOperasi from "@/app/hooks/use_getTblWaktuOperasi";
+import Use_getByDate__reg_periksa from "@/app/hooks/use_getByDate__reg_periksa";
+import { Schema_getByDate__reg_periksa } from "@/app/schema/antrianPoliSchema";
 
 
 //#region - dayjs setting
@@ -18,9 +20,9 @@ dayjs.tz.setDefault("Asia/Makassar");
 
 function FetchDataServer({ searchParams }: { searchParams: any }) {
 
-  const { data: daftarOperasi, isError, error, isLoading } = Use_getTblWaktuOperasi(
+  const { data: daftarOperasi, isError, error, isLoading } = Use_getByDate__reg_periksa(
     dayjs(searchParams.tgl_registrasi).format("YYYY-MM-DD"),
-    // '2024-11-21'
+    dayjs(searchParams.tgl_registrasi).add(1, 'day').format("YYYY-MM-DD")
   );
 
   if (isLoading) return <p>Loading...</p>;

@@ -62,10 +62,11 @@ const FormUpdateLaporanOperasi = ({
     onSuccess: (savedData, newData) => {
       queryClient.setQueryData<SchemaFormUpdateLaporanOperasi>(['updateWaktuLaporanOperasi'], newData);
       messageApi.success("Jam operasi berhasil disimpan")
+      router.refresh()
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 300);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 300);
 
     },
   })
