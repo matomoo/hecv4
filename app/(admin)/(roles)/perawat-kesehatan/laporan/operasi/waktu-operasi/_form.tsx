@@ -62,6 +62,9 @@ const FormUpsertWaktuMasukOperasi = ({
         jam_operasi_masuk: dayjs().format("HH:mm:ss"),
       }
 
+      axios.put(apiUrl + "updateBerkasDiterima__reg_periksa", dataForm)
+      axios.put(apiUrl + "updateBerkasDiterima__mutasi_berkas", dataForm)
+
       return axios.put(apiUrl + "insert__tbl_waktu_operasi", dataForm)
 
     },
