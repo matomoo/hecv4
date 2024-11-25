@@ -1,4 +1,6 @@
 "use client"
+
+import { speakNamaPasien } from "@/app/components/panggil-pasien";
 import { Button } from "antd";
 import dayjs from "dayjs";
 import Link from "next/link";
@@ -32,17 +34,19 @@ export const columns: any = [
     title: "Actions",
     dataIndex: "actions",
     render(value: any, record: any) {
+
       return (
-        <div className="flex gap-5">
+        <div className="flex gap-5 items-center">
           <Link href={'/perawat-kesehatan/laporan/operasi/daftar-registrasi/' + record.no_peserta.replaceAll('/', '-')}><i className="ri-kanban-view"></i></Link>
-          {/* <Button          
+
+          <Button
+            type="text"
             size="middle"
-            onClick={() =>
-              window.open('/perawat-kesehatan/laporan/operasi/daftar-registrasi/' + record.no_rujukan.replaceAll('/', '-'))
+            onClick={() => speakNamaPasien(record, 'operasi')
             }
           >
-            <i className="ri-kanban-view"></i>
-          </Button> */}
+            <i className="ri-volume-up-line"></i>
+          </Button>
 
           {/* <Button
             size="middle"

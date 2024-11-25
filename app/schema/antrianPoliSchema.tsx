@@ -4,6 +4,9 @@ export interface Schema_getByDate__reg_periksa {
   no_rawat: string
   no_rkm_medis: string
   nm_pasien: string
+  tgl_lahir: string
+  umur: string
+  jk: string
   tgl_operasi_masuk: string
   jam_operasi_masuk: string
   no_reg: string
@@ -24,7 +27,6 @@ export interface Schema_getByDate__reg_periksa {
   status_bayar: string
   status_poli: string
   no_peserta: string
-  jk: string
   no_tlp: string
   no_rujukan: string
   nm_poli: string
@@ -39,6 +41,8 @@ export interface SchemaAntrianAdmisi {
   no_rawat: string;
   no_rkm_medis: string;
   nm_pasien: string;
+  jk: string
+
 }
 
 interface responseRujukanPeserta_rujukan_peserta {

@@ -69,6 +69,11 @@ const DynamicMenu = () => {
               key: 'it-dashboard-2',
               label: <Link href={`/antrianAll2`}>Display All</Link>,
             },
+            {
+              key: 'it-dashboard-3',
+              label: <Link href={`/${userRole}/tts`}>Text To Speech Tester</Link>,
+            },
+
           ],
         },
 

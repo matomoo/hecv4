@@ -1,6 +1,7 @@
+import { speakNamaPasien } from '@/app/components/panggil-pasien';
 import useAntrianVisus from '@/app/hooks/useAntrianVisus';
 import { SchemaAntrianVisus } from '@/app/schema/antrianPoliSchema';
-import { Flex } from 'antd';
+import { Button, Flex } from 'antd';
 
 const ListAntrianVisus = () => {
   const { data: dataAntrianVisus, isError, error, isLoading } = useAntrianVisus();
@@ -15,7 +16,17 @@ const ListAntrianVisus = () => {
 
           {dataAntrianVisus?.map((elm: SchemaAntrianVisus) => {
             return (
-              <div key={elm.no_rawat}>{elm.nm_pasien}</div>
+              <div className='flex flex-row gap-4 items-center'>
+                <div key={elm.no_rawat}>{elm.nm_pasien}</div>
+                <Button
+                  type="text"
+                  size="middle"
+                  onClick={() => speakNamaPasien(elm, 'visus')
+                  }
+                >
+                  <i className="ri-volume-up-line"></i>
+                </Button>
+              </div>
             )
           })}
         </div>

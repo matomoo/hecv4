@@ -9,7 +9,7 @@ export const HandlerDelete_tbl_waktu_operasi = async (value: any) => {
         no_rawat: value.value.no_rawat
       }
     })
-    console.log(result)
+    // console.log(result)
     return {
       data: [result],
     };
