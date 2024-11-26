@@ -16,8 +16,8 @@ const ListAntrianVisus = () => {
 
           {dataAntrianVisus?.map((elm: SchemaAntrianVisus) => {
             return (
-              <div className='flex flex-row gap-4 items-center'>
-                <div key={elm.no_rawat}>{elm.nm_pasien}</div>
+              <div className='flex flex-row gap-4 items-center' key={elm.no_rawat}>
+                <div >{elm.nm_pasien}</div>
                 <Button
                   type="text"
                   size="middle"

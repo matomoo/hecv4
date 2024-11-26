@@ -5,12 +5,12 @@ import { Button, Flex, Space } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-const page = ({ params }: { params: { nomorrujukan: string } }) => {
+const Page = ({ params }: { params: { nomorrujukan: string } }) => {
+  const router = useRouter()
+
   const { data: dataRujukanPeserta, isError, error, isLoading } = UseVclaimRujukanPeserta(params.nomorrujukan);
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
-
-  const router = useRouter()
 
 
   return (
@@ -71,4 +71,4 @@ const page = ({ params }: { params: { nomorrujukan: string } }) => {
   )
 }
 
-export default page
+export default Page
