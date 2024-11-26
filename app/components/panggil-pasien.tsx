@@ -9,6 +9,7 @@ export const speakNamaPasien = (record: any, room: string): void => {
     // Set voice to Indonesian if available
     const voices = speechSynthesis.getVoices();
     const indonesianVoice = voices.find((voice) => voice.name === 'Microsoft Gadis Online (Natural) - Indonesian (Indonesia)');
+    console.log(voices)
     console.log(indonesianVoice)
     if (indonesianVoice) {
       utterance.voice = indonesianVoice;
