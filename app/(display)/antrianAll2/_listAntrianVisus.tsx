@@ -21,7 +21,7 @@ const ListAntrianVisus = () => {
                 <Button
                   type="text"
                   size="middle"
-                  onClick={() => speakNamaPasien(elm, 'visus')
+                  onClick={() => speakNamaPasien(elm, 'pemeriksaan')
                   }
                 >
                   <i className="ri-volume-up-line"></i>
