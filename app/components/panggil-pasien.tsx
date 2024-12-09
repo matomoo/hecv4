@@ -12,8 +12,8 @@ export const speakNamaPasien = (record: any, room: string): void => {
       voice.name === 'Microsoft Gadis Online (Natural) - Indonesian (Indonesia)' ||
       voice.name === 'Google Bahasa Indonesia'
     );
-    console.log(voices)
-    console.log(indonesianVoice)
+    // console.log(voices)
+    // console.log(indonesianVoice)
     if (indonesianVoice) {
       utterance.voice = indonesianVoice;
       utterance.lang = 'id-ID';

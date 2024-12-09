@@ -1,3 +1,4 @@
+import { GooSpeech } from '@/app/components/gooSpeech';
 import { speakNamaPasien } from '@/app/components/panggil-pasien';
 import useAntrianAdmisi from '@/app/hooks/useAntrianAdmisi';
 import { SchemaAntrianAdmisi } from '@/app/schema/antrianPoliSchema';
@@ -7,6 +8,7 @@ const ListAntrianAdmisi = () => {
   const { data: dataAntrianAdmisi, isError, error, isLoading } = useAntrianAdmisi();
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
+
 
   return (
     <div>
@@ -22,7 +24,7 @@ const ListAntrianAdmisi = () => {
                 <Button
                   type="text"
                   size="middle"
-                  onClick={() => speakNamaPasien(elm, 'admisi')
+                  onClick={() => GooSpeech(elm, 'admisi')
                   }
                 >
                   <i className="ri-volume-up-line"></i>
