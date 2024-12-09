@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "export",
   images: {
     domains: ["bougenvillepangkep.hijr.de", "hec1.hijr.de"],
   },

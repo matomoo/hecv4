@@ -73,6 +73,14 @@ const DynamicMenu = () => {
               key: 'it-dashboard-3',
               label: <Link href={`/${userRole}/tts`}>Text To Speech Tester</Link>,
             },
+            {
+              key: 'it-dashboard-4',
+              label: <Link href={`/${userRole}/polly`}>Polly</Link>,
+            },
+            {
+              key: 'it-dashboard-5',
+              label: <Link href={`/${userRole}/ggl-tts`}>Google TTS</Link>,
+            },
 
           ],
         },

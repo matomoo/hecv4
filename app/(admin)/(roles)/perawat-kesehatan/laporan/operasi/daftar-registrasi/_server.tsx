@@ -28,6 +28,8 @@ function FetchDataServer({ searchParams }: { searchParams: any }) {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{error.message}</p>;
 
+  console.log(daftarOperasi)
+
   return (
     <div>
       <Table
