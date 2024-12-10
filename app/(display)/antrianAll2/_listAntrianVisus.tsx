@@ -1,4 +1,4 @@
-import { speakNamaPasien } from '@/app/components/panggil-pasien';
+import { GooSpeech } from '@/app/components/gooSpeech';
 import useAntrianVisus from '@/app/hooks/useAntrianVisus';
 import { SchemaAntrianVisus } from '@/app/schema/antrianPoliSchema';
 import { Button, Flex } from 'antd';
@@ -21,7 +21,7 @@ const ListAntrianVisus = () => {
                 <Button
                   type="text"
                   size="middle"
-                  onClick={() => speakNamaPasien(elm, 'pemeriksaan')
+                  onClick={() => GooSpeech(elm, 'pemeriksaan')
                   }
                 >
                   <i className="ri-volume-up-line"></i>

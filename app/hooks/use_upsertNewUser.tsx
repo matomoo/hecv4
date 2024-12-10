@@ -7,10 +7,12 @@ export const GetCurrentUserFromMongoDB = async () => {
   try {
     // check if user is already exists with clerk userid property
     const clerkUser = await currentUser();
+    // console.log(clerkUser?.emailAddresses[0].emailAddress)
+
     let databaseUser = null;
     databaseUser = await db.appUser.findUnique({
       where: {
-        clerkUserId: clerkUser?.id,
+        email: clerkUser?.emailAddresses[0].emailAddress,
       },
     });
     if (databaseUser) {
