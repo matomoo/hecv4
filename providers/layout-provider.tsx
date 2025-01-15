@@ -26,7 +26,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   } = theme.useToken();
 
   const pathname = usePathname();
-  const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus', 'antrianAll2'].includes(pathname.split("/")[1]);
+  const isPublicRoute = ["sign-in", "sign-up", 'antrianPoli', 'antrianAll', 'antrianAdmisi', 'antrianVisus', 'antrianAll2', 'antrianAll3'].includes(pathname.split("/")[1]);
 
   const getHeader = () => {
     if (isPublicRoute) return children;
