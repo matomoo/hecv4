@@ -2,7 +2,7 @@
 const nextConfig = {
   // output: "export",
   images: {
-    domains: ["bougenvillepangkep.hijr.win", "hec1.hijr.win"],
+    domains: ["bougenvillepangkep.hijr.win", "hec.hijr.win"],
   },
   async headers() {
     return [

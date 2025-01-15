@@ -1,4 +1,4 @@
-export const apiUrl = "https://hec1.hijr.win/hecapiv3/";
+export const apiUrl = "https://hec.hijr.win/hecapiv3/";
 
 // delete
 
