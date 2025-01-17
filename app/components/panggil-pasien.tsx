@@ -3,7 +3,16 @@ import { Schema_getByDate__reg_periksa } from "../schema/antrianPoliSchema";
 export const speakNamaPasien = (record: any, room: string): void => {
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     const jk = record.jk === 'P' ? 'Ibu ' : 'Bapak '
-    const newName = record.nm_pasien.replace(" DG ", " Daeng ")
+    const newName = record.nm_pasien
+      .replace("DG ", " Daeng ")
+      .replace("ST ", " Sitti ")
+      .replace("MUH ", " Muhammad ")
+      .replace("MUH. ", " Muhammad ")
+      .replace("H. ", " Haji ")
+      .replace("H ", " Haji ")
+      .replace("HJ. ", " Hajjah ")
+      .replace("HJ ", " Hajjah ")
+      .toLowerCase();
     const utterance = new SpeechSynthesisUtterance(`${jk} ${newName}, silahkan ke ruang ${room}.`);
 
     // Set voice to Indonesian if available

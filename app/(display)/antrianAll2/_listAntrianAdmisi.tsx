@@ -24,7 +24,7 @@ const ListAntrianAdmisi = () => {
                 <Button
                   type="text"
                   size="middle"
-                  onClick={() => GooSpeech(elm, 'admisi')
+                  onClick={() => speakNamaPasien(elm, 'admisi')
                   }
                 >
                   <i className="ri-volume-up-line"></i>

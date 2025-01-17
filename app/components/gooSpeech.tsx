@@ -2,7 +2,15 @@ import { Schema_getByDate__reg_periksa } from "../schema/antrianPoliSchema";
 
 export const GooSpeech = async (record: any, room: string): Promise<void> => {
   const jk = record.jk === 'P' ? 'Ibu ' : 'Bapak ';
-  const newName = record.nm_pasien.replace(" DG ", " Daeng ").toLowerCase();
+  const newName = record.nm_pasien
+    .replace("DG ", " Daeng ")
+    .replace("ST ", " Sitti ")
+    .replace("MUH ", " Muhammad ")
+    .replace("H. ", " Haji ")
+    .replace("H ", " Haji ")
+    .replace("HJ. ", " Hajjah ")
+    .replace("HJ ", " Hajjah ")
+    .toLowerCase();
   const textToSpeak = `${jk} ${newName}, silahkan ke ruang ${room}.`;
 
   try {
