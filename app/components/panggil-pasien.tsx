@@ -5,13 +5,12 @@ export const speakNamaPasien = (record: any, room: string): void => {
     const jk = record.jk === 'P' ? 'Ibu ' : 'Bapak '
     const newName = record.nm_pasien
       .replace("DG ", " Daeng ")
+      .replace("DG. ", " Daeng ")
       .replace("ST ", " Sitti ")
-      .replace("MUH ", " Muhammad ")
+      .replace("ST. ", " Sitti ")
       .replace("MUH. ", " Muhammad ")
       .replace("H. ", " Haji ")
-      .replace("H ", " Haji ")
       .replace("HJ. ", " Hajjah ")
-      .replace("HJ ", " Hajjah ")
       .toLowerCase();
     const utterance = new SpeechSynthesisUtterance(`${jk} ${newName}, silahkan ke ruang ${room}.`);
 
