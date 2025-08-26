@@ -1,37 +1,19 @@
 import React from 'react'
 import dayjs from "dayjs";
-import timezone from 'dayjs/plugin/timezone';
-import utc from 'dayjs/plugin/utc';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { HandlerUpdateTaskId } from '@/app/api/mjkn/handlerUpdateTaskId';
 import { Tag } from 'antd';
 
-//#region - dayjs setting
-// dayjs.locale("id");
-// dayjs.extend(utc)
-// dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
-// dayjs.tz.setDefault("Asia/Makassar");
-//#endregion
-
 
 const sendTaskid = async (noBooking: string, taskId: number, waktu: number) => {
   const res = await HandlerUpdateTaskId(noBooking, taskId, waktu)
-  // console.log(res.metadata.message)
   return res.metadata.message
 }
 
 const UpdateTaskId = (
   { taskId, waktu, minuteDiff, noBooking, noSep, jamReg }
     : { taskId: any, waktu: string, minuteDiff: number, noBooking: string, noSep: string, jamReg: string }) => {
-
-  // if (noBooking !== '20240927000002')
-  //   return <div>no proses</div>
-
-  // console.log(taskId)
-  // console.log(minuteDiff)
-  // console.log(noSep)
-  // console.log(jamReg)
 
   if (noSep === undefined || noSep === null)
     return <Tag color="default">No SEP</Tag>
@@ -51,7 +33,6 @@ const UpdateTaskId = (
     res23.then(a => console.log(a))
   }
 
-  // waiting confirm running tid:2
   if (taskId === 1 && minuteDiff > 1) {
 
     console.log('send taskId 2 and noBooking ' + noBooking)
@@ -79,21 +60,18 @@ const UpdateTaskId = (
 
   }
 
-  // waiting confirm running tid:3
   if (taskId === 2 && minuteDiff > 1) {
     console.log('send taskId 3 and noBooking ' + noBooking)
 
     const addMinut34 = Math.floor(Math.random() * 7) + Math.floor(Math.random() * 8) + 48
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
     const res = sendTaskid(noBooking, 3, waktuForTid4)
-    // res.then(a => console.log(a))
     console.log(res.then(a => console.log(a)))
   }
 
-  // only running tid:4
   if (taskId === 3 && minuteDiff > 5) {
     console.log('send taskId 4 and minuteDiff > 15 and noBooking ' + noBooking)
-    const addMinut34 = Math.floor(Math.random() * 5) + 10
+    const addMinut34 = Math.floor(Math.random() * 5) + 6
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut34, "minute").unix() * 1000
     const res = sendTaskid(noBooking, 4, waktuForTid4)
     res.then(a => {
@@ -121,7 +99,7 @@ const UpdateTaskId = (
 
   if (taskId === 4 && minuteDiff > 5) {
     console.log('send taskId 5 and minuteDiff > 15 and noBooking ' + noBooking)
-    const addMinut45 = Math.floor(Math.random() * 5) + 15
+    const addMinut45 = Math.floor(Math.random() * 5) + 8
     const waktuForTid4 = dayjs(waktu, "DD-MM-YYYY HH:mm:ss", true).add(addMinut45, "minute").unix() * 1000
     const res = sendTaskid(noBooking, 5, waktuForTid4)
     console.log(res.then(a => {
